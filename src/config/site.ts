@@ -5,58 +5,30 @@ export const siteConfig = {
   description: "The Best Search Engine for RoboMaster",
   navItems: [
     {
-      label: "Home",
+      label: "搜索",
       href: "/",
     },
     {
-      label: "Docs",
+      label: "文档",
       href: "/docs",
     },
     {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
+      label: "关于",
       href: "/about",
     },
   ],
   navMenuItems: [
     {
-      label: "Profile",
-      href: "/profile",
+      label: "搜索",
+      href: "/",
     },
     {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "文档",
+      href: "/docs",
     },
     {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
+      label: "关于",
+      href: "/about",
     },
   ],
   links: {
