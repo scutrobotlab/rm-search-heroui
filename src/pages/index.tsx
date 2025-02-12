@@ -16,7 +16,7 @@ export default function IndexPage() {
           <span className={title()}>Engine for </span>
           <span className={title({ color: "blue" })}>RoboMaster</span>
           <div className={subtitle({ class: "mt-4" })}>
-            Powered by SCUT RobotLab
+            华南理工大学华南虎战队献给 RoboMaster 的十周年礼物
           </div>
         </div>
 
