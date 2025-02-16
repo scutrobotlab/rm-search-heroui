@@ -66,23 +66,23 @@ a[class^='ais-'] {
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .ais-Hits-list {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (min-width: 1200px) {
-  .ais-Hits-list {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+/*@media (min-width: 1200px) {*/
+/*  .ais-Hits-list {*/
+/*    grid-template-columns: 1fr 1fr 1fr;*/
+/*  }*/
+/*}*/
 
-@media (min-width: 1600px) {
-  .ais-Hits-list {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
+/*@media (min-width: 1600px) {*/
+/*  .ais-Hits-list {*/
+/*    grid-template-columns: 1fr 1fr 1fr 1fr;*/
+/*  }*/
+/*}*/
 
 /* Menus */
 

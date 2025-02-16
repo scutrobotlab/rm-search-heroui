@@ -15,6 +15,7 @@ import {
 import Searchkit from "searchkit";
 import Client from "@searchkit/instantsearch-client";
 import { Image } from "@heroui/image";
+import { Card, CardBody, CardHeader } from "@heroui/card";
 
 import getRouting from "./routing";
 
@@ -233,17 +234,17 @@ export function Search() {
                 className="container-option"
                 items={[
                   {
-                    label: "每页 16 条记录",
-                    value: 16,
+                    label: "每页 10 条记录",
+                    value: 10,
                     default: true,
                   },
                   {
-                    label: "每页 32 条记录",
-                    value: 32,
+                    label: "每页 20 条记录",
+                    value: 20,
                   },
                   {
-                    label: "每页 64 条记录",
-                    value: 64,
+                    label: "每页 40 条记录",
+                    value: 40,
                   },
                 ]}
               />
@@ -317,37 +318,27 @@ type HitType = AlgoliaHit<{
 
 function Hit({ hit }: { hit: HitType }) {
   return (
-    <article className="hit">
-      <header className="hit-image-container">
-        <Image
-          isZoomed
-          alt={hit.title}
-          className="hit-image"
-          height={150}
-          radius={"md"}
-          src={hit.image}
-          width={200}
-        />
-      </header>
-
-      <div className="hit-info-container">
-        <b>
-          <Highlight attribute="title" highlightedTagName="mark" hit={hit} />
-        </b>
-        <p
-          className="hit-description"
-          style={{
-            display: "-webkit-box",
-            WebkitLineClamp: 6,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-          }}
-        >
-          <Snippet attribute="content" highlightedTagName="mark" hit={hit} />
-        </p>
-
-        <footer />
-      </div>
-    </article>
+    <div className="hit-info-container">
+      <Card className="px-2 py-4">
+        <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+          <h2 className="font-bold text-large line-clamp-1">
+            <Highlight attribute="title" highlightedTagName="mark" hit={hit} />
+          </h2>
+          <p className="text-tiny uppercase font-bold overflow-auto line-clamp-3">
+            <Snippet attribute="content" highlightedTagName="mark" hit={hit} />
+          </p>
+        </CardHeader>
+        <CardBody className="overflow-visible py-2">
+          <Image
+            isZoomed
+            alt={hit.title}
+            className="hit-image"
+            height={200}
+            radius={"md"}
+            src={hit.image}
+          />
+        </CardBody>
+      </Card>
+    </div>
   );
 }
