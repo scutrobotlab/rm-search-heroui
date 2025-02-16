@@ -1,19 +1,18 @@
-import { liteClient as algoliasearch } from "algoliasearch/lite";
 import { useRef } from "react";
 import {
-  Configure,
   HierarchicalMenu,
   Hits,
   HitsPerPage,
   InstantSearch,
   Pagination,
-  RefinementList,
   SearchBox,
-  SortBy,
-  ToggleRefinement,
   Highlight,
   Snippet,
+  SortBy,
+  RefinementList,
 } from "react-instantsearch";
+import Searchkit from "searchkit";
+import Client from "@searchkit/instantsearch-client";
 
 import getRouting from "./routing";
 
@@ -24,13 +23,10 @@ import {
   NoResults,
   NoResultsBoundary,
   Panel,
-  PriceSlider,
-  Ratings,
   ResultsNumberMobile,
   SaveFiltersMobile,
 } from "@/components";
 import { ScrollTo } from "@/components/ScrollTo";
-import { formatNumber } from "@/utils";
 
 import "instantsearch.css/themes/reset.css";
 
@@ -41,12 +37,47 @@ import "@/components/Pagination.css";
 
 import type { Hit as AlgoliaHit } from "instantsearch.js";
 
-const searchClient = algoliasearch(
-  "latency",
-  "6be0576ff61c053d5f9a3225e2a90f76",
-);
+const sk = new Searchkit({
+  connection: {
+    host: "/api",
+    // if you are authenticating with api key
+    // https://www.searchkit.co/docs/guides/setup-elasticsearch#connecting-with-api-key
+    // apiKey: 'a2Rha1VJTUJMcGU4ajA3Tm9fZ0Y6MjAzX2pLbURTXy1hNm9SUGZGRlhJdw=='
+    // if you are authenticating with username/password
+    // https://www.searchkit.co/docs/guides/setup-elasticsearch#connecting-with-usernamepassword
+    auth: {
+      username: "elastic",
+      password: "elastic",
+    },
+  },
+  search_settings: {
+    highlight_attributes: ["title"],
+    snippet_attributes: ["content:100"],
+    search_attributes: [{ field: "title", weight: 3 }, "content"],
+    result_attributes: ["title", "content", "image"],
+    facet_attributes: [
+      {
+        attribute: "categories.lvl0",
+        field: "category_lvl0.keyword",
+        type: "string",
+      },
+      {
+        attribute: "categories.lvl1",
+        field: "category_lvl1.keyword",
+        type: "string",
+      },
+      {
+        attribute: "college_name",
+        field: "college_name.keyword",
+        type: "string",
+      },
+    ],
+  },
+});
 
-const indexName = "instant_search";
+const searchClient = Client(sk);
+
+const indexName = "rm-search";
 const routing = getRouting(indexName);
 
 export default function DocsPage() {
@@ -93,9 +124,9 @@ export function Search() {
 
   return (
     <InstantSearch
+      routing
       indexName={indexName}
-      insights={true}
-      routing={routing}
+      insights={false}
       searchClient={searchClient}
     >
       <SearchBox
@@ -103,11 +134,11 @@ export function Search() {
         submitIconComponent={SubmitIcon}
       />
 
-      <Configure
-        attributesToSnippet={["description:10"]}
-        removeWordsIfNoResults="allOptional"
-        snippetEllipsisText="…"
-      />
+      {/*<Configure*/}
+      {/*  attributesToSnippet={["content:10"]}*/}
+      {/*  removeWordsIfNoResults="allOptional"*/}
+      {/*  snippetEllipsisText="…"*/}
+      {/*/>*/}
 
       <ScrollTo>
         <main ref={containerRef} className="search-container">
@@ -126,38 +157,44 @@ export function Search() {
               </div>
 
               <div className="container-body">
-                <Panel header="Category">
+                <Panel header="标签">
                   <HierarchicalMenu
-                    attributes={[
-                      "hierarchicalCategories.lvl0",
-                      "hierarchicalCategories.lvl1",
-                    ]}
+                    attributes={["categories.lvl0", "categories.lvl1"]}
                   />
                 </Panel>
 
-                <Panel header="Brands">
+                <Panel header="学校">
                   <RefinementList
-                    attribute="brand"
-                    searchable={true}
-                    searchablePlaceholder="Search for brands…"
+                    searchable
+                    showMore
+                    attribute="college_name"
+                    limit={8}
                   />
                 </Panel>
 
-                <Panel header="Price">
-                  <PriceSlider attribute="price" />
-                </Panel>
+                {/*<Panel header="Brands">*/}
+                {/*  <RefinementList*/}
+                {/*    attribute="brand"*/}
+                {/*    searchable={true}*/}
+                {/*    searchablePlaceholder="Search for brands…"*/}
+                {/*  />*/}
+                {/*</Panel>*/}
 
-                <Panel header="Free shipping">
-                  <ToggleRefinement
-                    attribute="free_shipping"
-                    label="Display only items with free shipping"
-                    on={true}
-                  />
-                </Panel>
+                {/*<Panel header="Price">*/}
+                {/*  <PriceSlider attribute="price" />*/}
+                {/*</Panel>*/}
 
-                <Panel header="Ratings">
-                  <Ratings attribute="rating" />
-                </Panel>
+                {/*<Panel header="Free shipping">*/}
+                {/*  <ToggleRefinement*/}
+                {/*    attribute="free_shipping"*/}
+                {/*    label="Display only items with free shipping"*/}
+                {/*    on={true}*/}
+                {/*  />*/}
+                {/*</Panel>*/}
+
+                {/*<Panel header="Ratings">*/}
+                {/*  <Ratings attribute="rating" />*/}
+                {/*</Panel>*/}
               </div>
             </section>
 
@@ -273,55 +310,27 @@ function SubmitIcon() {
 }
 
 type HitType = AlgoliaHit<{
+  title: string;
+  content: string;
   image: string;
-  name: string;
-  categories: string[];
-  description: string;
-  price: number;
-  rating: string;
 }>;
 
 function Hit({ hit }: { hit: HitType }) {
   return (
     <article className="hit">
       <header className="hit-image-container">
-        <img alt={hit.name} className="hit-image" src={hit.image} />
+        <img alt={hit.title} className="hit-image" src={hit.image} />
       </header>
 
       <div className="hit-info-container">
-        <p className="hit-category">{hit.categories[0]}</p>
         <h1>
-          <Highlight attribute="name" highlightedTagName="mark" hit={hit} />
+          <Highlight attribute="title" highlightedTagName="mark" hit={hit} />
         </h1>
         <p className="hit-description">
-          <Snippet
-            attribute="description"
-            highlightedTagName="mark"
-            hit={hit}
-          />
+          <Snippet attribute="content" highlightedTagName="mark" hit={hit} />
         </p>
 
-        <footer>
-          <p>
-            <span className="hit-em">$</span>{" "}
-            <strong>{formatNumber(hit.price)}</strong>{" "}
-            <span className="hit-em hit-rating">
-              <svg
-                height="8"
-                viewBox="0 0 16 16"
-                width="8"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10.472 5.008L16 5.816l-4 3.896.944 5.504L8 12.616l-4.944 2.6L4 9.712 0 5.816l5.528-.808L8 0z"
-                  fill="#e2a400"
-                  fillRule="evenodd"
-                />
-              </svg>{" "}
-              {hit.rating}
-            </span>
-          </p>
-        </footer>
+        <footer />
       </div>
     </article>
   );
