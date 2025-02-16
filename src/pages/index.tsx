@@ -40,6 +40,13 @@ export default function IndexPage() {
               <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
             }
             type="search"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                const value = e.currentTarget.value;
+
+                window.location.href = `/search?rm-search[query]=${value}`;
+              }
+            }}
           />
         </div>
       </section>

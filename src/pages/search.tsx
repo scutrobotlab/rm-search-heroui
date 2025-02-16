@@ -10,9 +10,11 @@ import {
   Snippet,
   SortBy,
   RefinementList,
+  Configure,
 } from "react-instantsearch";
 import Searchkit from "searchkit";
 import Client from "@searchkit/instantsearch-client";
+import { Image } from "@heroui/image";
 
 import getRouting from "./routing";
 
@@ -134,11 +136,11 @@ export function Search() {
         submitIconComponent={SubmitIcon}
       />
 
-      {/*<Configure*/}
-      {/*  attributesToSnippet={["content:10"]}*/}
-      {/*  removeWordsIfNoResults="allOptional"*/}
-      {/*  snippetEllipsisText="…"*/}
-      {/*/>*/}
+      <Configure
+        attributesToSnippet={["content:10"]}
+        removeWordsIfNoResults="allOptional"
+        snippetEllipsisText="…"
+      />
 
       <ScrollTo>
         <main ref={containerRef} className="search-container">
@@ -319,7 +321,15 @@ function Hit({ hit }: { hit: HitType }) {
   return (
     <article className="hit">
       <header className="hit-image-container">
-        <img alt={hit.title} className="hit-image" src={hit.image} />
+        <Image
+          isZoomed
+          alt={hit.title}
+          className="hit-image"
+          height={150}
+          radius={"md"}
+          src={hit.image}
+          width={200}
+        />
       </header>
 
       <div className="hit-info-container">
