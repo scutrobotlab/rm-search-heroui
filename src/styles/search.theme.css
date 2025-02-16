@@ -2,7 +2,7 @@
 
 [class^='ais-'] {
   box-sizing: border-box;
-  font-size: 0.9rem;
+  /*font-size: 1rem;*/
 }
 
 a[class^='ais-'] {
@@ -48,7 +48,7 @@ a[class^='ais-'] {
 .ais-Stats,
 .ais-ToggleRefinement {
   color: #21243d;
-  font-size: 0.75rem;
+  /*font-size: 0.75rem;*/
 }
 
 /* Highlighting */

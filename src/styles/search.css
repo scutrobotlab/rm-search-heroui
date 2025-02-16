@@ -133,13 +133,11 @@ mark {
 
 .hit {
     color: #21243d;
-    font-size: 14px;
     line-height: 18px;
 }
 
 .hit-category {
     color: #21243d;
-    font-size: 12px;
     font-weight: 600;
     line-height: 1;
     margin-bottom: 8px;
@@ -173,7 +171,6 @@ mark {
 
 .hit-em {
     color: #0072F5;
-    font-size: 11px;
     font-weight: 600;
 }
 

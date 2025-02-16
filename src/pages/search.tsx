@@ -319,16 +319,16 @@ type HitType = AlgoliaHit<{
 function Hit({ hit }: { hit: HitType }) {
   return (
     <div className="hit-info-container">
-      <Card className="px-2 py-4">
+      <Card className="py-4">
         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-          <h2 className="font-bold text-large line-clamp-1">
+          <h2 className="font-bold line-clamp-1">
             <Highlight attribute="title" highlightedTagName="mark" hit={hit} />
           </h2>
-          <p className="text-tiny uppercase font-bold overflow-auto line-clamp-3">
+          <p className="text-sm overflow-auto line-clamp-4 mt-2">
             <Snippet attribute="content" highlightedTagName="mark" hit={hit} />
           </p>
         </CardHeader>
-        <CardBody className="overflow-visible py-2">
+        <CardBody className="overflow-visible py-2 items-center">
           <Image
             isZoomed
             alt={hit.title}
