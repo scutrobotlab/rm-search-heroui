@@ -7,8 +7,8 @@ export function NoResults() {
 
   const hasRefinements = results.getRefinements().length > 0;
   const description = hasRefinements
-    ? "Try to reset your applied filters."
-    : "Please try another query.";
+    ? "请尝试重置已应用的筛选器。"
+    : "请尝试另一个查询。";
 
   return (
     <div className="hits-empty-state">
@@ -88,9 +88,7 @@ export function NoResults() {
         </g>
       </svg>
 
-      <p className="hits-empty-state-title">
-        Sorry, we can&apos;t find any matches to your query!
-      </p>
+      <p className="hits-empty-state-title">抱歉，我们找不到任何结果</p>
       <p className="hits-empty-state-description">{description}</p>
 
       <ClearFilters />
