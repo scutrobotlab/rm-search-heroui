@@ -15,9 +15,7 @@ import {
 import Searchkit from "searchkit";
 import Client from "@searchkit/instantsearch-client";
 import { Image } from "@heroui/image";
-import { Card, CardBody, CardHeader } from "@heroui/card";
-
-import getRouting from "./routing";
+import { Card, CardBody } from "@heroui/card";
 
 import DefaultLayout from "@/layouts/default";
 import {
@@ -54,7 +52,7 @@ const sk = new Searchkit({
   },
   search_settings: {
     highlight_attributes: ["title"],
-    snippet_attributes: ["content:200"],
+    snippet_attributes: ["content:100"],
     search_attributes: [{ field: "title", weight: 3 }, "content"],
     result_attributes: ["title", "content", "image"],
     facet_attributes: [
@@ -80,7 +78,7 @@ const sk = new Searchkit({
 const searchClient = Client(sk);
 
 const indexName = "rm-search";
-const routing = getRouting(indexName);
+// const routing = getRouting(indexName);
 
 export default function DocsPage() {
   return (
@@ -324,24 +322,45 @@ type HitType = AlgoliaHit<{
 function Hit({ hit }: { hit: HitType }) {
   return (
     <div className="hit-info-container">
-      <Card className="py-4">
-        <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-          <h2 className="font-bold line-clamp-1">
-            <Highlight attribute="title" highlightedTagName="mark" hit={hit} />
-          </h2>
-          <p className="text-sm overflow-auto line-clamp-4 mt-2">
-            <Snippet attribute="content" highlightedTagName="mark" hit={hit} />
-          </p>
-        </CardHeader>
-        <CardBody className="overflow-visible py-2 items-center">
-          <Image
-            isZoomed
-            alt={hit.title}
-            className="hit-image"
-            height={200}
-            radius={"md"}
-            src={hit.image}
-          />
+      <Card isBlurred className="border-none mb-4" shadow="sm">
+        <CardBody>
+          <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
+            <div className="relative col-span-6 md:col-span-4">
+              {hit.image != "" ? (
+                <Image
+                  isZoomed
+                  alt={hit.title}
+                  className="object-cover"
+                  fallbackSrc="/placeholder.jpg"
+                  height="200"
+                  shadow="md"
+                  src={hit.image}
+                  width="200"
+                />
+              ) : null}
+            </div>
+
+            <div className="flex flex-col col-span-6 md:col-span-8">
+              <div className="flex justify-between items-start">
+                <div className="flex flex-col gap-0">
+                  <h1 className="text-large font-medium mt-2">
+                    <Highlight
+                      attribute="title"
+                      highlightedTagName="mark"
+                      hit={hit}
+                    />
+                  </h1>
+                  <p className="text-small text-foreground/80 line-clamp-4">
+                    <Snippet
+                      attribute="content"
+                      highlightedTagName="mark"
+                      hit={hit}
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </CardBody>
       </Card>
     </div>
