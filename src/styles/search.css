@@ -117,7 +117,7 @@ mark {
 }
 
 .ais-SearchBox-submit {
-    color: #e2a400;
+    color: #0072F5;
 }
 
 .ais-RefinementList .ais-SearchBox-input {
@@ -172,16 +172,9 @@ mark {
 }
 
 .hit-em {
-    color: #e2a400;
+    color: #0072F5;
     font-size: 11px;
     font-weight: 600;
-}
-
-.hit-rating {
-    border: 1px solid rgba(226, 164, 0, 0.5);
-    border-radius: 4px;
-    margin-left: 4px;
-    padding: 0 4px;
 }
 
 .hits-empty-state {
@@ -238,7 +231,7 @@ mark {
 }
 
 .ais-ToggleRefinement-checkbox:checked::before {
-    color: #e2a400;
+    color: #0072F5;
 }
 
 .ais-ToggleRefinement-checkbox::before {

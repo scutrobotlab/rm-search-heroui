@@ -120,7 +120,7 @@ a[class^='ais-'] {
 }
 
 .ais-RatingMenu-starIcon--full {
-  fill: #e2a400;
+  fill: #0072F5;
 }
 
 .ais-RatingMenu-starIcon--empty {
@@ -269,7 +269,7 @@ a[class^='ais-'] {
 }
 
 .ais-RefinementList-item--selected .ais-RefinementList-checkbox {
-  background-color: #e2a400;
+  background-color: #0072F5;
 }
 
 .ais-RefinementList-item--selected .ais-RefinementList-checkbox::after {
@@ -364,7 +364,7 @@ a[class^='ais-'] {
 }
 
 .ais-ToggleRefinement-checkbox:checked {
-  background: #e2a400;
+  background: #0072F5;
 }
 
 .ais-ToggleRefinement-checkbox::after {
@@ -422,7 +422,7 @@ a[class^='ais-'] {
 }
 
 .ais-RangeSlider .rheostat-progress {
-  background-color: #e2a400;
+  background-color: #0072F5;
   border-radius: 3px;
   height: 3px;
   top: 0;
@@ -497,7 +497,7 @@ a[class^='ais-'] {
 }
 
 .ais-Pagination-item--selected {
-  background-color: #e2a400;
+  background-color: #0072F5;
   background-image: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.34),

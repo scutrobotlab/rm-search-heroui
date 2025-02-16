@@ -131,10 +131,7 @@ export function Search() {
       insights={false}
       searchClient={searchClient}
     >
-      <SearchBox
-        placeholder="Product, brand, color, …"
-        submitIconComponent={SubmitIcon}
-      />
+      <SearchBox placeholder="搜索..." submitIconComponent={SubmitIcon} />
 
       <Configure
         attributesToSnippet={["content:10"]}
@@ -144,10 +141,11 @@ export function Search() {
 
       <ScrollTo>
         <main ref={containerRef} className="search-container">
-          <div className="container-wrapper">
+          <div className="container-wrapper mt-6">
+            {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
             <section className="container-filters" onKeyUp={onKeyUp}>
               <div className="container-header">
-                <h2>Filters</h2>
+                <h2>筛选器</h2>
 
                 <div className="clear-filters" data-layout="desktop">
                   <ClearFilters />
@@ -211,21 +209,21 @@ export function Search() {
             </footer>
           </div>
 
-          <section className="container-results">
+          <section className="container-results mt-6">
             <header className="container-header container-options">
               <SortBy
                 className="container-option"
                 items={[
                   {
-                    label: "Sort by featured",
+                    label: "根据相关性排序",
                     value: "instant_search",
                   },
                   {
-                    label: "Price ascending",
+                    label: "价格升序",
                     value: "instant_search_price_asc",
                   },
                   {
-                    label: "Price descending",
+                    label: "价格降序",
                     value: "instant_search_price_desc",
                   },
                 ]}
@@ -235,16 +233,16 @@ export function Search() {
                 className="container-option"
                 items={[
                   {
-                    label: "16 hits per page",
+                    label: "每页 16 条记录",
                     value: 16,
                     default: true,
                   },
                   {
-                    label: "32 hits per page",
+                    label: "每页 32 条记录",
                     value: 32,
                   },
                   {
-                    label: "64 hits per page",
+                    label: "每页 64 条记录",
                     value: 64,
                   },
                 ]}
