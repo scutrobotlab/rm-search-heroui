@@ -54,7 +54,7 @@ const sk = new Searchkit({
   },
   search_settings: {
     highlight_attributes: ["title"],
-    snippet_attributes: ["content:100"],
+    snippet_attributes: ["content:200"],
     search_attributes: [{ field: "title", weight: 3 }, "content"],
     result_attributes: ["title", "content", "image"],
     facet_attributes: [
@@ -331,10 +331,18 @@ function Hit({ hit }: { hit: HitType }) {
       </header>
 
       <div className="hit-info-container">
-        <h1>
+        <b>
           <Highlight attribute="title" highlightedTagName="mark" hit={hit} />
-        </h1>
-        <p className="hit-description">
+        </b>
+        <p
+          className="hit-description"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 6,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
           <Snippet attribute="content" highlightedTagName="mark" hit={hit} />
         </p>
 
