@@ -322,7 +322,7 @@ type HitType = AlgoliaHit<{
 function Hit({ hit }: { hit: HitType }) {
   return (
     <div className="hit-info-container">
-      <Card isBlurred className="border-none mb-4" shadow="sm">
+      <Card isBlurred className="border-none px-1 py-2" shadow="sm">
         <CardBody>
           <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
             <div className="relative col-span-6 md:col-span-4">
@@ -343,7 +343,7 @@ function Hit({ hit }: { hit: HitType }) {
             <div className="flex flex-col col-span-6 md:col-span-8">
               <div className="flex justify-between items-start">
                 <div className="flex flex-col gap-0">
-                  <h1 className="text-large font-medium mt-2">
+                  <h1 className="text-large font-medium ">
                     <Highlight
                       attribute="title"
                       highlightedTagName="mark"
