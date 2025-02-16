@@ -29,7 +29,6 @@ import {
   ResultsNumberMobile,
   SaveFiltersMobile,
 } from "@/components";
-import { ScrollTo } from "@/components/ScrollTo";
 
 import "instantsearch.css/themes/reset.css";
 
@@ -132,7 +131,13 @@ export function Search() {
       insights={false}
       searchClient={searchClient}
     >
-      <SearchBox placeholder="搜索..." submitIconComponent={SubmitIcon} />
+      <SearchBox
+        placeholder="搜索..."
+        style={{
+          display: "none",
+        }}
+        submitIconComponent={SubmitIcon}
+      />
 
       <Configure
         attributesToSnippet={["content:10"]}
@@ -140,7 +145,7 @@ export function Search() {
         snippetEllipsisText="…"
       />
 
-      <ScrollTo>
+      <div>
         <main ref={containerRef} className="search-container">
           <div className="container-wrapper mt-6">
             {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
@@ -157,7 +162,7 @@ export function Search() {
                 </div>
               </div>
 
-              <div className="container-body">
+              <div className="container-body text-sm">
                 <Panel header="标签">
                   <HierarchicalMenu
                     attributes={["categories.lvl0", "categories.lvl1"]}
@@ -259,7 +264,7 @@ export function Search() {
             </footer>
           </section>
         </main>
-      </ScrollTo>
+      </div>
 
       <aside data-layout="mobile">
         <button
