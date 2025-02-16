@@ -1,7 +1,6 @@
-import React from 'react';
-import { useInstantSearch } from 'react-instantsearch';
+import { useInstantSearch } from "react-instantsearch";
 
-import { formatNumber } from '../utils';
+import { formatNumber } from "../utils";
 
 export function SaveFiltersMobile({ onClick }: { onClick: () => void }) {
   const {

@@ -22,8 +22,8 @@ import {
   GithubIcon,
   DiscordIcon,
   SearchIcon,
-} from "@/components/icons";
-import { Logo } from "@/components/icons";
+} from "@/components/Icons";
+import { Logo } from "@/components/Icons";
 
 export const Navbar = () => {
   const location = useLocation();

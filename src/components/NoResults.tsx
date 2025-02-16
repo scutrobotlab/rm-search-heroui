@@ -1,24 +1,23 @@
-import React from 'react';
-import { useInstantSearch } from 'react-instantsearch';
+import { useInstantSearch } from "react-instantsearch";
 
-import { ClearFilters } from './ClearFilters';
+import { ClearFilters } from "./ClearFilters";
 
 export function NoResults() {
   const { results } = useInstantSearch();
 
   const hasRefinements = results.getRefinements().length > 0;
   const description = hasRefinements
-    ? 'Try to reset your applied filters.'
-    : 'Please try another query.';
+    ? "Try to reset your applied filters."
+    : "Please try another query.";
 
   return (
     <div className="hits-empty-state">
       <svg
+        className="hits-empty-state-image"
+        height="138"
+        width="138"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        width="138"
-        height="138"
-        className="hits-empty-state-image"
       >
         <defs>
           <linearGradient id="c" x1="50%" x2="50%" y1="100%" y2="0%">
@@ -26,16 +25,16 @@ export function NoResults() {
             <stop offset="100%" stopColor="#FFF" />
           </linearGradient>
           <path
-            id="b"
             d="M68.71 114.25a45.54 45.54 0 1 1 0-91.08 45.54 45.54 0 0 1 0 91.08z"
+            id="b"
           />
           <filter
+            filterUnits="objectBoundingBox"
+            height="140.6%"
             id="a"
             width="140.6%"
-            height="140.6%"
             x="-20.3%"
             y="-15.9%"
-            filterUnits="objectBoundingBox"
           >
             <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1" />
             <feGaussianBlur
@@ -69,16 +68,16 @@ export function NoResults() {
           <circle
             cx="68.85"
             cy="68.85"
-            r="68.85"
             fill="#5468FF"
             opacity=".07"
+            r="68.85"
           />
           <circle
             cx="68.85"
             cy="68.85"
-            r="52.95"
             fill="#5468FF"
             opacity=".08"
+            r="52.95"
           />
           <use fill="#000" filter="url(#a)" xlinkHref="#b" />
           <use fill="url(#c)" xlinkHref="#b" />

@@ -1,8 +1,8 @@
 import {
   Range,
   RangeBoundaries,
-} from 'instantsearch.js/es/connectors/range/connectRange';
-import React, { useState } from 'react';
+} from "instantsearch.js/es/connectors/range/connectRange";
+import { useState } from "react";
 import {
   Slider,
   Rail,
@@ -10,11 +10,11 @@ import {
   Tracks,
   Ticks,
   GetHandleProps,
-} from 'react-compound-slider';
-import { useRange } from 'react-instantsearch';
+} from "react-compound-slider";
+import { useRange } from "react-instantsearch";
 
-import './PriceSlider.css';
-import { formatNumber } from '../utils';
+import "./PriceSlider.css";
+import { formatNumber } from "../utils";
 
 function Handle({
   domain: [min, max],
@@ -31,27 +31,27 @@ function Handle({
     <>
       {/* Dummy element to make the tooltip draggable */}
       <div
+        aria-hidden={true}
         style={{
-          position: 'absolute',
+          position: "absolute",
           left: `${percent}%`,
           width: 40,
           height: 25,
-          transform: 'translate(-50%, -100%)',
-          cursor: disabled ? 'not-allowed' : 'grab',
+          transform: "translate(-50%, -100%)",
+          cursor: disabled ? "not-allowed" : "grab",
           zIndex: 1,
         }}
-        aria-hidden={true}
         {...getHandleProps(id)}
       />
       <div
-        role="slider"
-        className="slider-handle"
-        aria-valuemin={min}
         aria-valuemax={max}
+        aria-valuemin={min}
         aria-valuenow={value}
+        className="slider-handle"
+        role="slider"
         style={{
           left: `${percent}%`,
-          cursor: disabled ? 'not-allowed' : 'grab',
+          cursor: disabled ? "not-allowed" : "grab",
         }}
         {...getHandleProps(id)}
       />
@@ -86,7 +86,7 @@ export function PriceSlider({
       min,
       max,
     },
-    { $$widgetType: 'e-commerce.rangeSlider' }
+    { $$widgetType: "e-commerce.rangeSlider" },
   );
   const [ticksValues, setTicksValues] = useState(convertToTicks(start, range));
   const [prevStart, setPrevStart] = useState(start);
@@ -114,15 +114,15 @@ export function PriceSlider({
 
   return (
     <Slider
-      mode={2}
-      step={1}
-      domain={[range.min!, range.max!]}
-      values={start as number[]}
+      className="ais-RangeSlider"
       disabled={!canRefine}
+      domain={[range.min!, range.max!]}
+      mode={2}
+      rootStyle={{ position: "relative", marginTop: "1.5rem" }}
+      step={1}
+      values={start as number[]}
       onChange={onChange}
       onUpdate={onUpdate}
-      rootStyle={{ position: 'relative', marginTop: '1.5rem' }}
-      className="ais-RangeSlider"
     >
       <Rail>
         {({ getRailProps }) => (
@@ -154,9 +154,9 @@ export function PriceSlider({
             {handles.map((handle) => (
               <Handle
                 key={handle.id}
-                handle={handle}
                 domain={[range.min!, range.max!]}
                 getHandleProps={getHandleProps}
+                handle={handle}
               />
             ))}
           </div>
@@ -175,7 +175,7 @@ export function PriceSlider({
                 }}
               >
                 {/* @ts-ignore */}
-                <span style={{ color: '#e2a400', marginRight: 4 }}>$</span>
+                <span style={{ color: "#e2a400", marginRight: 4 }}>$</span>
                 {formatNumber(value)}
               </div>
             ))}
