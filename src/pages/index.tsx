@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
-import { SearchIcon } from "@/components/icons.tsx";
+import { SearchIcon } from "@/components/Icons.tsx";
 
 export default function IndexPage() {
   const inputRef = useRef<HTMLInputElement>(null);

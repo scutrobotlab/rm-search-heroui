@@ -6,16 +6,12 @@ import {
   InstantSearch,
   Pagination,
   SearchBox,
-  Highlight,
-  Snippet,
   SortBy,
   RefinementList,
   Configure,
 } from "react-instantsearch";
 import Searchkit from "searchkit";
 import Client from "@searchkit/instantsearch-client";
-import { Image } from "@heroui/image";
-import { Card, CardBody } from "@heroui/card";
 
 import DefaultLayout from "@/layouts/default";
 import {
@@ -34,8 +30,7 @@ import "../styles/search.css";
 import "../styles/search.theme.css";
 import "../styles/search.mobile.css";
 import "@/components/Pagination.css";
-
-import type { Hit as AlgoliaHit } from "instantsearch.js";
+import { Hit } from "@/components/Hit.tsx";
 
 const sk = new Searchkit({
   connection: {
@@ -280,59 +275,5 @@ export function Search() {
         </button>
       </aside>
     </InstantSearch>
-  );
-}
-
-type HitType = AlgoliaHit<{
-  title: string;
-  content: string;
-  image: string;
-}>;
-
-function Hit({ hit }: { hit: HitType }) {
-  return (
-    <div className="hit-info-container">
-      <Card isBlurred className="border-none px-1 py-2" shadow="sm">
-        <CardBody>
-          <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
-            <div className="relative col-span-6 md:col-span-4">
-              {hit.image != "" ? (
-                <Image
-                  isZoomed
-                  alt={hit.title}
-                  className="object-cover"
-                  fallbackSrc="/placeholder.jpg"
-                  height="200"
-                  shadow="md"
-                  src={hit.image}
-                  width="200"
-                />
-              ) : null}
-            </div>
-
-            <div className="flex flex-col col-span-6 md:col-span-8">
-              <div className="flex justify-between items-start">
-                <div className="flex flex-col gap-0">
-                  <h1 className="text-large font-medium ">
-                    <Highlight
-                      attribute="title"
-                      highlightedTagName="mark"
-                      hit={hit}
-                    />
-                  </h1>
-                  <p className="text-small text-foreground/80 line-clamp-4">
-                    <Snippet
-                      attribute="content"
-                      highlightedTagName="mark"
-                      hit={hit}
-                    />
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardBody>
-      </Card>
-    </div>
   );
 }
