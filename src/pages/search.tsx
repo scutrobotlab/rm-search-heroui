@@ -232,16 +232,16 @@ export function Search() {
                 className="container-option"
                 items={[
                   {
-                    label: "根据相关性排序",
+                    label: "默认排序",
                     value: "rm-search",
                   },
                   {
-                    label: "按创建时间升序",
-                    value: "rm-search_create_time_asc",
+                    label: "创建时间最新",
+                    value: "rm-search_create_time_desc",
                   },
                   {
-                    label: "按创建时间降序",
-                    value: "rm-search_create_time_desc",
+                    label: "创建时间最早",
+                    value: "rm-search_create_time_asc",
                   },
                 ]}
               />
