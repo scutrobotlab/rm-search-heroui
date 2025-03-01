@@ -40,7 +40,7 @@ const sk = new Searchkit({
   search_settings: {
     highlight_attributes: ["title"],
     snippet_attributes: ["content:100"],
-    search_attributes: [{ field: "title", weight: 3 }, "content"],
+    search_attributes: [{ field: "title", weight: 5 }, "content"],
     result_attributes: [
       "id",
       "title",
@@ -85,7 +85,59 @@ const sk = new Searchkit({
   },
 });
 
-const searchClient = Client(sk);
+const searchClient = Client(sk, {
+  hooks: {
+    beforeSearch: async (searchRequests) => {
+      return searchRequests.map((sr) => {
+        const originalQuery = sr.body.query;
+        const newQuery = {
+          function_score: {
+            query: originalQuery,
+            functions: [
+              {
+                filter: {
+                  range: {
+                    create_time: {
+                      gte: "now-1095d",
+                    },
+                  },
+                },
+                gauss: {
+                  create_time: {
+                    origin: "now/d",
+                    scale: "1095d",
+                    offset: "30d",
+                    decay: 0.5,
+                  },
+                },
+              },
+              {
+                filter: {
+                  range: {
+                    create_time: {
+                      lt: "now-1095d",
+                    },
+                  },
+                },
+                weight: 0.5,
+              },
+            ],
+            score_mode: "first",
+            boost_mode: "multiply",
+          },
+        };
+
+        return {
+          ...sr,
+          body: {
+            ...sr.body,
+            query: newQuery,
+          },
+        };
+      });
+    },
+  },
+});
 
 const indexName = "rm-search";
 const routing = GetRouting(indexName);
