@@ -67,6 +67,20 @@ const sk = new Searchkit({
         type: "string",
       },
     ],
+    sorting: {
+      default: {
+        field: "_score",
+        order: "desc",
+      },
+      _create_time_asc: {
+        field: "create_time",
+        order: "asc",
+      },
+      _create_time_desc: {
+        field: "create_time",
+        order: "desc",
+      },
+    },
   },
 });
 
@@ -210,15 +224,15 @@ export function Search() {
                 items={[
                   {
                     label: "根据相关性排序",
-                    value: "instant_search",
+                    value: "rm-search",
                   },
                   {
-                    label: "价格升序",
-                    value: "instant_search_price_asc",
+                    label: "按创建时间升序",
+                    value: "rm-search_create_time_asc",
                   },
                   {
-                    label: "价格降序",
-                    value: "instant_search_price_desc",
+                    label: "按创建时间降序",
+                    value: "rm-search_create_time_desc",
                   },
                 ]}
               />
