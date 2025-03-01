@@ -17,7 +17,7 @@ const routeStateDefaultValues: RouteState = {
   page: "1",
   category: "",
   sortBy: "rm-search",
-  hitsPerPage: "20",
+  hitsPerPage: "10",
 };
 
 const encodedCategoriesLvl0 = {
