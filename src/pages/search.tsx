@@ -31,6 +31,7 @@ import "../styles/search.theme.css";
 import "../styles/search.mobile.css";
 import "@/components/Pagination.css";
 import { Hit } from "@/components/Hit.tsx";
+import getRouting from "@/pages/routing.ts";
 
 const sk = new Searchkit({
   connection: {
@@ -96,7 +97,7 @@ const sk = new Searchkit({
 const searchClient = Client(sk);
 
 const indexName = "rm-search";
-// const routing = getRouting(indexName);
+const routing = getRouting(indexName);
 
 export default function DocsPage() {
   return (
@@ -142,9 +143,9 @@ export function Search() {
 
   return (
     <InstantSearch
-      routing
       indexName={indexName}
       insights={false}
+      routing={routing}
       searchClient={searchClient}
     >
       <SearchBox

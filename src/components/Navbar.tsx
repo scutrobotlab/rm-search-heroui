@@ -99,7 +99,7 @@ export const Navbar = () => {
               if (e.key === "Enter") {
                 const value = e.currentTarget.value;
 
-                window.location.href = `/search?rm-search[query]=${value}`;
+                window.location.href = `/search/?query=${value}`;
               }
             }}
           />
