@@ -33,7 +33,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const query = searchParams.get("rm-search[query]");
+    const query = searchParams.get("query");
 
     if (query && inputRef.current) {
       setInputValue(query);
