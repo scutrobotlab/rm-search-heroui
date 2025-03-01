@@ -49,7 +49,16 @@ const sk = new Searchkit({
     highlight_attributes: ["title"],
     snippet_attributes: ["content:100"],
     search_attributes: [{ field: "title", weight: 3 }, "content"],
-    result_attributes: ["id", "title", "content", "image", "url"],
+    result_attributes: [
+      "id",
+      "title",
+      "content",
+      "image",
+      "url",
+      "author_nickname",
+      "author_avatar",
+      "create_time",
+    ],
     facet_attributes: [
       {
         attribute: "categories.lvl0",
