@@ -4,6 +4,7 @@ import { Image } from "@heroui/image";
 import { Card, CardBody, CardFooter } from "@heroui/card"; // 引入 CardFooter
 import { Highlight, Snippet } from "react-instantsearch";
 import { User } from "@heroui/user";
+import moment from "moment";
 
 type HitType = AlgoliaHit<{
   id: string;
@@ -21,17 +22,21 @@ export function Hit({ hit }: { hit: HitType }) {
 
   return (
     <a href={hit.url} rel="noopener noreferrer" target="_blank">
-      <Card isBlurred className="border-none h-full flex flex-col p-2">
-        <div className="flex-grow">
-          <div className="grid grid-cols-6 md:grid-cols-12 gap-0">
-            <div
-              className={
-                hasImage
-                  ? "col-span-6 md:col-span-8"
-                  : "col-span-12 md:col-span-12"
-              }
-            >
-              <CardBody>
+      <Card
+        isBlurred
+        className="border-none h-full flex flex-col p-2"
+        shadow="sm"
+      >
+        <CardBody>
+          <div className="flex-grow">
+            <div className="grid grid-cols-6 md:grid-cols-12 gap-0">
+              <div
+                className={
+                  hasImage
+                    ? "col-span-6 md:col-span-8"
+                    : "col-span-12 md:col-span-12"
+                }
+              >
                 <div className="flex flex-col gap-0">
                   <h1 className="text-large font-medium line-clamp-2">
                     <Highlight
@@ -48,24 +53,24 @@ export function Hit({ hit }: { hit: HitType }) {
                     />
                   </p>
                 </div>
-              </CardBody>
-            </div>
-            {hasImage && (
-              <div className="col-span-6 md:col-span-4 mr-4 flex items-center justify-center h-full relative">
-                <div className="image-gradient-mask absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-white">
-                  <Image
-                    isZoomed
-                    alt={hit.title}
-                    className="object-cover h-full w-full rounded-none border-none"
-                    fallbackSrc="/placeholder.jpg"
-                    shadow={"none"}
-                    src={hit.image}
-                  />
-                </div>
               </div>
-            )}
+              {hasImage && (
+                <div className="col-span-6 md:col-span-4 ml-2 flex items-center justify-center h-full relative">
+                  <div className="image-gradient-mask absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-white">
+                    <Image
+                      isZoomed
+                      alt={hit.title}
+                      className="object-cover h-full w-full rounded-none border-none"
+                      fallbackSrc="/placeholder.jpg"
+                      shadow={"none"}
+                      src={hit.image}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        </CardBody>
         <CardFooter className="pt-0">
           <div className="flex gap-1">
             <User
@@ -79,7 +84,7 @@ export function Hit({ hit }: { hit: HitType }) {
           </div>
           <div className="flex gap-1 pl-4">
             <time className="text-foreground/60 text-small">
-              {new Date(hit.create_time).toLocaleDateString()}
+              {moment(hit.create_time).format("YYYY-MM-DD")}
             </time>
           </div>
         </CardFooter>
