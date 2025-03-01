@@ -17,12 +17,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  SearchIcon,
-} from "@/components/Icons";
+import { BilibiliIcon, GithubIcon, SearchIcon } from "@/components/Icons";
 import { Logo } from "@/components/Icons";
 
 export const Navbar = () => {
@@ -111,11 +106,8 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal href={siteConfig.links.twitter} title="Twitter">
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal href={siteConfig.links.discord} title="Discord">
-            <DiscordIcon className="text-default-500" />
+          <Link isExternal href={siteConfig.links.bilibili} title="GitHub">
+            <BilibiliIcon className="text-default-500" />
           </Link>
           <Link isExternal href={siteConfig.links.github} title="GitHub">
             <GithubIcon className="text-default-500" />
