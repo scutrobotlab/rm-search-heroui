@@ -36,15 +36,6 @@ import GetRouting from "@/pages/routing.ts";
 const sk = new Searchkit({
   connection: {
     host: "/api",
-    // if you are authenticating with api key
-    // https://www.searchkit.co/docs/guides/setup-elasticsearch#connecting-with-api-key
-    // apiKey: 'a2Rha1VJTUJMcGU4ajA3Tm9fZ0Y6MjAzX2pLbURTXy1hNm9SUGZGRlhJdw=='
-    // if you are authenticating with username/password
-    // https://www.searchkit.co/docs/guides/setup-elasticsearch#connecting-with-usernamepassword
-    auth: {
-      username: "elastic",
-      password: "elastic",
-    },
   },
   search_settings: {
     highlight_attributes: ["title"],
