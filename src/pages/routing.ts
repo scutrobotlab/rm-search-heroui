@@ -28,9 +28,13 @@ const encodedCategoriesLvl0 = {
   embedded: "嵌入式",
   algorithm: "算法",
   hardware: "硬件",
-  other: "其他",
+  others: "其他",
   software: "软件",
   management: "管理",
+  "tech-review": "技术评审",
+  operation: "运营",
+  official: "官方信息",
+  "tactical-strategy": "战术策略",
 } as const;
 
 type EncodedCategoriesLvl0 = typeof encodedCategoriesLvl0;
@@ -46,7 +50,7 @@ const encodedCategoriesLvl1 = {
   hard: "困难",
   standard: "步兵",
   engineering: "工程",
-  other: "其他",
+  others: "其他",
   utility: "实用工具",
   aerial: "空中机器人",
   sentry: "哨兵",
@@ -61,6 +65,15 @@ const encodedCategoriesLvl1 = {
   "project-management": "项目管理",
   "organization-building": "组织建设",
   "culture-building": "文化建设",
+  "mid-term-assessment": "中期进度考核",
+  "complete-form-assessment": "完整形态考核",
+  "season-planning": "赛季规划",
+  "referee-system-assessment": "裁判系统考核",
+  "rule-evaluation": "规则测评",
+  publicity: "宣传",
+  business: "招商",
+  announcement: "公告",
+  "tactical-strategy": "战术策略",
 } as const;
 
 type EncodedCategoriesLvl1 = typeof encodedCategoriesLvl1;
@@ -172,7 +185,7 @@ const router = historyRouter<RouteState>({
       routeState.query &&
       routeState.query !== routeStateDefaultValues.query
     ) {
-      queryParameters.query = encodeURIComponent(routeState.query);
+      queryParameters.query = routeState.query;
     }
     if (routeState.page && routeState.page !== routeStateDefaultValues.page) {
       queryParameters.page = routeState.page;

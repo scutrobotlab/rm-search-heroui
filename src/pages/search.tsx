@@ -181,7 +181,9 @@ export function Search() {
               <div className="container-body text-sm">
                 <Panel header="标签">
                   <HierarchicalMenu
+                    showMore
                     attributes={["categories.lvl0", "categories.lvl1"]}
+                    limit={8}
                   />
                 </Panel>
 
