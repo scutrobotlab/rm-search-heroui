@@ -43,6 +43,7 @@ const sk = new Searchkit({
     search_attributes: [{ field: "title", weight: 5 }, "content"],
     result_attributes: [
       "id",
+      "source",
       "title",
       "content",
       "image",
@@ -52,6 +53,11 @@ const sk = new Searchkit({
       "create_time",
     ],
     facet_attributes: [
+      {
+        attribute: "source",
+        field: "source.keyword",
+        type: "string",
+      },
       {
         attribute: "categories.lvl0",
         field: "category_lvl0.keyword",
@@ -222,6 +228,10 @@ export function Search() {
               </div>
 
               <div className="container-body text-sm">
+                <Panel header="来源">
+                  <RefinementList attribute="source" />
+                </Panel>
+
                 <Panel header="标签">
                   <HierarchicalMenu
                     showMore

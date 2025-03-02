@@ -73,6 +73,7 @@ const encodedCategoriesLvl1 = {
   publicity: "宣传",
   business: "招商",
   announcement: "公告",
+  attachment: "附件",
   "tactical-strategy": "战术策略",
 } as const;
 
