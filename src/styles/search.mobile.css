@@ -244,6 +244,10 @@
     margin-right: 2rem;
   }
 
+  .hit-image {
+    display: none;
+  }
+
   .hit-info-container {
     flex: 2;
   }

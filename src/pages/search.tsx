@@ -160,6 +160,25 @@ export function Search() {
   const containerRef = useRef<HTMLElement>(null);
   const headerRef = useRef(null);
 
+  let paginationPadding: number = 0;
+  let paginationShowFirst: boolean = true;
+  let paginationShowLast: boolean = true;
+  const innerWidth = window.innerWidth;
+
+  if (innerWidth >= 0 && innerWidth < 400) {
+    paginationPadding = 1;
+    paginationShowFirst = false;
+    paginationShowLast = false;
+  } else if (innerWidth >= 400 && innerWidth < 500) {
+    paginationPadding = 1;
+  } else if (innerWidth >= 500 && innerWidth < 900) {
+    paginationPadding = 2;
+  } else if (innerWidth >= 900 && innerWidth < 1200) {
+    paginationPadding = 4;
+  } else if (innerWidth >= 1200) {
+    paginationPadding = 6;
+  }
+
   function openFilters() {
     document.body.classList.add("filtering");
     window.scrollTo(0, 0);
@@ -327,7 +346,11 @@ export function Search() {
             </NoResultsBoundary>
 
             <footer className="container-footer">
-              <Pagination padding={5} />
+              <Pagination
+                padding={paginationPadding}
+                showFirst={paginationShowFirst}
+                showLast={paginationShowLast}
+              />
             </footer>
           </section>
         </main>

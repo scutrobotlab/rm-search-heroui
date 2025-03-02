@@ -60,7 +60,7 @@ export function Hit({ hit }: { hit: HitType }) {
                     <Image
                       isZoomed
                       alt={hit.title}
-                      className="object-cover h-full w-full rounded-none border-none"
+                      className="object-cover h-full w-full rounded-none border-none hit-image"
                       fallbackSrc="/placeholder.jpg"
                       shadow={"none"}
                       src={hit.image}
