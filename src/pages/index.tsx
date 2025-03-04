@@ -24,8 +24,10 @@ export default function IndexPage() {
           <br />
           <span className={title()}>Engine for </span>
           <span className={title({ color: "blue" })}>RoboMaster</span>
-          <div className={subtitle({ class: "mt-4" })}>
-            华南理工大学华南虎战队献给 RoboMaster 的十周年礼物
+          <div className={subtitle({ class: "mt-6" })}>
+            你是我 灵魂的旋律 春日的细雨 墓碑的雏菊
+            <br />
+            而我 将陪你走过下一个十年
           </div>
         </div>
 
