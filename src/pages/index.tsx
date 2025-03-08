@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
-import { SearchIcon } from "@/components/Icons.tsx";
+import { Logo, SearchIcon } from "@/components/Icons.tsx";
 
 export default function IndexPage() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -17,7 +17,8 @@ export default function IndexPage() {
 
   return (
     <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-20">
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-8">
+        <Logo size={128} />
         <div className="inline-block max-w-lg text-center justify-center">
           <span className={title()}>The Best&nbsp;</span>
           <span className={title({ color: "violet" })}>Search</span>
