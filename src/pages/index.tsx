@@ -19,7 +19,7 @@ export default function IndexPage() {
             <br />
             春日的细雨 墓碑的雏菊
             <br />
-            而我 将陪你走入下一个十年
+            而我愿陪你走进下一个十年
           </div>
         </div>
 
