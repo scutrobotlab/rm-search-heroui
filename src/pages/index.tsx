@@ -14,14 +14,16 @@ export default function IndexPage() {
           <br />
           <span className={title()}>Engine for </span>
           <span className={title({ color: "blue" })}>RoboMaster</span>
-          <div className={subtitle({ class: "mt-6" })}>
-            你是我 灵魂的旋律 春日的细雨 墓碑的雏菊
+          <div className={subtitle({ class: "mt-4" })}>
+            你是我 灵魂的旋律
+            <br />
+            春日的细雨 墓碑的雏菊
             <br />
             而我 将陪你走入下一个十年
           </div>
         </div>
 
-        <div className="mt-8 w-full max-w-lg">
+        <div className="mt-6 w-full max-w-lg">
           {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
           <QueryInput autoFocus={true} size={"lg"} />
         </div>
