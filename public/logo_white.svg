@@ -1,30 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300.53 230.63">
     <defs>
         <style>
-            .cls-1,.cls-3{fill:#231815;}.cls-2{fill:url(#未命名的渐变_6);}.cls-3{stroke:#231815;stroke-miterlimit:10;stroke-width:4px;}.cls-4{fill:url(#未命名的渐变_5);}
+            .cls-1,.cls-3{fill:#fff;}.cls-2{fill:url(#未命名的渐变_2);}.cls-3{stroke:#fff;stroke-miterlimit:10;stroke-width:4px;}.cls-4{fill:url(#未命名的渐变_4);}
         </style>
-        <linearGradient id="未命名的渐变_6" x1="9.71" y1="195.96" x2="240.79" y2="195.96"
+        <linearGradient id="未命名的渐变_2" x1="9.71" y1="195.96" x2="240.79" y2="195.96"
                         gradientUnits="userSpaceOnUse">
-            <stop offset="0.02" stop-color="#fff"/>
-            <stop offset="0.07" stop-color="#e2e2e2"/>
-            <stop offset="0.19" stop-color="#a7a7a7"/>
-            <stop offset="0.31" stop-color="#747474"/>
-            <stop offset="0.42" stop-color="#4a4a4a"/>
-            <stop offset="0.53" stop-color="#2a2a2a"/>
-            <stop offset="0.64" stop-color="#131313"/>lo
-            <stop offset="0.74" stop-color="#050505"/>
-            <stop offset="0.83"/>
+            <stop offset="0.02"/>
+            <stop offset="0.07" stop-color="#1d1d1d"/>
+            <stop offset="0.19" stop-color="#585858"/>
+            <stop offset="0.31" stop-color="#8b8b8b"/>
+            <stop offset="0.42" stop-color="#b5b5b5"/>
+            <stop offset="0.53" stop-color="#d5d5d5"/>
+            <stop offset="0.64" stop-color="#ececec"/>
+            <stop offset="0.74" stop-color="#fafafa"/>
+            <stop offset="0.83" stop-color="#fff"/>
         </linearGradient>
-        <linearGradient id="未命名的渐变_5" x1="52.35" y1="46.36" x2="251.41" y2="109.5" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#fff"/>
-            <stop offset="0.05" stop-color="#e2e2e2"/>
-            <stop offset="0.17" stop-color="#a7a7a7"/>
-            <stop offset="0.3" stop-color="#747474"/>
-            <stop offset="0.41" stop-color="#4a4a4a"/>
-            <stop offset="0.53" stop-color="#2a2a2a"/>
-            <stop offset="0.64" stop-color="#131313"/>
-            <stop offset="0.74" stop-color="#050505"/>
-            <stop offset="0.83"/>
+        <linearGradient id="未命名的渐变_4" x1="52.35" y1="46.36" x2="251.41" y2="109.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0"/>
+            <stop offset="0.05" stop-color="#1d1d1d"/>
+            <stop offset="0.17" stop-color="#585858"/>
+            <stop offset="0.3" stop-color="#8b8b8b"/>
+            <stop offset="0.41" stop-color="#b5b5b5"/>
+            <stop offset="0.53" stop-color="#d5d5d5"/>
+            <stop offset="0.64" stop-color="#ececec"/>
+            <stop offset="0.74" stop-color="#fafafa"/>
+            <stop offset="0.83" stop-color="#fff"/>
         </linearGradient>
     </defs>
     <g id="图层_2" data-name="图层 2">
