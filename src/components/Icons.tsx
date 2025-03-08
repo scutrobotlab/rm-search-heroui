@@ -1,14 +1,23 @@
 import * as React from "react";
+import { Image } from "@heroui/image";
 
 import { IconSvgProps } from "@/types";
+import { useTheme } from "@/hooks/use-theme.ts";
 
-export const Logo: React.FC<IconSvgProps> = ({ size = 32, height }) => {
+export function Logo({ size = 32 }) {
+  const { theme } = useTheme();
+
+  // TODO: 切换主题时 LOGO 更新不及时
   return (
     <div>
-      <img alt="RM Search" height={height} src="/logo.svg" width={size} />
+      <Image
+        alt="RM Search"
+        src={theme === "light" ? "/logo.svg" : "/logo-dark.svg"}
+        width={size}
+      />
     </div>
   );
-};
+}
 
 export const BilibiliIcon: React.FC<IconSvgProps> = ({
   size = 24,
