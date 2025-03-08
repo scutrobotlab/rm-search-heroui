@@ -1,20 +1,9 @@
-import { Input } from "@heroui/input";
-import { Kbd } from "@heroui/kbd";
-import { useEffect, useRef } from "react";
-
 import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
-import { Logo, SearchIcon } from "@/components/Icons.tsx";
+import { Logo } from "@/components/Icons.tsx";
+import QueryInput from "@/components/QueryInput.tsx";
 
 export default function IndexPage() {
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
-
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-6">
@@ -33,34 +22,8 @@ export default function IndexPage() {
         </div>
 
         <div className="mt-8 w-full max-w-lg">
-          <Input
-            ref={inputRef}
-            aria-label="Search"
-            classNames={{
-              inputWrapper: "bg-default-100",
-              input: "text-lg",
-            }}
-            endContent={
-              <Kbd className="hidden lg:inline-block" keys={["command"]}>
-                Enter
-              </Kbd>
-            }
-            labelPlacement="outside"
-            placeholder="搜索..."
-            radius={"md"}
-            size={"lg"}
-            startContent={
-              <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-            }
-            type="search"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                const value = e.currentTarget.value;
-
-                window.location.href = `/search/?query=${value}`;
-              }
-            }}
-          />
+          {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
+          <QueryInput autoFocus={true} size={"lg"} />
         </div>
       </section>
     </DefaultLayout>
