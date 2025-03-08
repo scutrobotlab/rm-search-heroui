@@ -33,6 +33,7 @@ import "@/components/Pagination.css";
 import { Hit } from "@/components/Hit.tsx";
 import GetRouting from "@/pages/routing.ts";
 import QueryInput from "@/components/QueryInput.tsx";
+import { Loading } from "@/components/Loading.tsx";
 
 const sk = new Searchkit({
   connection: {
@@ -230,6 +231,8 @@ export function Search() {
           <QueryInput size={"lg"} />
         </div>
       )}
+
+      <Loading />
 
       <Configure
         attributesToSnippet={["content:10"]}
