@@ -140,11 +140,7 @@ export const Navbar = () => {
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
+                  location.pathname === item.href ? "primary" : "foreground"
                 }
                 href={item.href}
                 size="lg"
