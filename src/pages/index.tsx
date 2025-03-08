@@ -17,8 +17,8 @@ export default function IndexPage() {
 
   return (
     <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-8">
-        <Logo size={128} />
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-6">
+        <Logo size={120} />
         <div className="inline-block max-w-lg text-center justify-center">
           <span className={title()}>The Best&nbsp;</span>
           <span className={title({ color: "violet" })}>Search</span>
@@ -28,7 +28,7 @@ export default function IndexPage() {
           <div className={subtitle({ class: "mt-6" })}>
             你是我 灵魂的旋律 春日的细雨 墓碑的雏菊
             <br />
-            而我 将陪你走过下一个十年
+            而我 将陪你走入下一个十年
           </div>
         </div>
 
