@@ -32,6 +32,7 @@ import "../styles/search.mobile.css";
 import "@/components/Pagination.css";
 import { Hit } from "@/components/Hit.tsx";
 import GetRouting from "@/pages/routing.ts";
+import QueryInput from "@/components/QueryInput.tsx";
 
 const sk = new Searchkit({
   connection: {
@@ -164,6 +165,7 @@ export function Search() {
   let paginationShowFirst: boolean = true;
   let paginationShowLast: boolean = true;
   const innerWidth = window.innerWidth;
+  const isMobile = innerWidth < 900;
 
   if (innerWidth >= 0 && innerWidth < 400) {
     paginationPadding = 1;
@@ -222,6 +224,12 @@ export function Search() {
           display: "none",
         }}
       />
+
+      {isMobile && (
+        <div className="px-4">
+          <QueryInput size={"lg"} />
+        </div>
+      )}
 
       <Configure
         attributesToSnippet={["content:10"]}

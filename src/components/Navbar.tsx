@@ -19,6 +19,7 @@ import QueryInput from "@/components/QueryInput.tsx";
 
 export const Navbar = () => {
   const isHomePage = location.pathname === "/";
+  const isMobile = window.innerWidth < 900;
 
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
@@ -51,7 +52,7 @@ export const Navbar = () => {
         </div>
       </NavbarContent>
 
-      {!isHomePage && (
+      {!isHomePage && !isMobile && (
         <NavbarContent>
           <QueryInput />
         </NavbarContent>
