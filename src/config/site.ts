@@ -5,12 +5,8 @@ export const siteConfig = {
   description: "The Best Search Engine for RoboMaster",
   navItems: [
     {
-      label: "搜索",
-      href: "/",
-    },
-    {
-      label: "文档",
-      href: "/docs",
+      label: "里程碑",
+      href: "/milestone",
     },
     {
       label: "关于",
@@ -19,12 +15,8 @@ export const siteConfig = {
   ],
   navMenuItems: [
     {
-      label: "搜索",
-      href: "/",
-    },
-    {
-      label: "文档",
-      href: "/docs",
+      label: "里程碑",
+      href: "/milestone",
     },
     {
       label: "关于",

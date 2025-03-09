@@ -4,6 +4,7 @@ import IndexPage from "@/pages/index";
 import DocsPage from "@/pages/docs";
 import AboutPage from "@/pages/about";
 import SearchPage from "@/pages/search";
+import MilestonePage from "@/pages/milestone.tsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route element={<SearchPage />} path="/search/*" />
       <Route element={<DocsPage />} path="/docs" />
       <Route element={<AboutPage />} path="/about" />
+      <Route element={<MilestonePage />} path="/milestone" />
     </Routes>
   );
 }
