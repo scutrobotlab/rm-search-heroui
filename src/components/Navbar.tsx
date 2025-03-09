@@ -63,7 +63,7 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal href={siteConfig.links.bilibili} title="GitHub">
+          <Link isExternal href={siteConfig.links.bilibili} title="bilibili">
             <BilibiliIcon className="text-default-500" />
           </Link>
           <Link isExternal href={siteConfig.links.github} title="GitHub">
