@@ -30,7 +30,7 @@ export default function MilestonePage() {
           <AccordionItem subtitle="2025年1月23日" title="明确更高的目标">
             经过几天的思考，我们认为与其做最好的论坛搜索引擎，不如做最好的RM社区搜索引擎。
             我们计划将官网公告、B站、微信公众号等自媒体的内容也纳入搜索范围。
-            基于大量的公开资料，自动为每支队伍立传，最后发展成RM的《史记》。
+            基于大量的公开资料，自动为每支队伍立传，最后发展成 RM 的《史记》。
           </AccordionItem>
           <AccordionItem subtitle="2025年2月11日" title="前端框架技术验证">
             经过了3天的技术验证，我们初步选定了基于 Algolia InstantSearch 的
@@ -55,18 +55,18 @@ export default function MilestonePage() {
             用户参与内测，收到了一些反馈和建议。在此感谢他们的支持和帮助。
           </AccordionItem>
           <AccordionItem subtitle="2025年3月6日" title="LOGO 设计完成">
-            设计师完成了多个版本 RMSearch 的 LOGO
+            设计师完成了多个版本 RM Search 的 LOGO
             设计，我们从中选出了最满意的设计并最终定稿。
           </AccordionItem>
           <AccordionItem subtitle="2025年3月6日" title="宣传推文初稿完成">
-            我们完成了 RMSearch 的宣传推文初稿，并确定了最终发布时间。
+            我们完成了 RM Search 的宣传推文初稿，并确定了最终发布时间。
           </AccordionItem>
           <AccordionItem subtitle="2025年3月8日" title="生产环境部署完成">
             我们在一台拥有 36 核 CPU 和 128GB
             内存的服务器上部署了生产环境，并提供了 200Mbps 的公网带宽。
           </AccordionItem>
           <AccordionItem subtitle="2025年3月9日" title="正式发布">
-            所有的努力都已经完成。我们在此宣布，RMSearch 正式上线。
+            所有的努力都已经完成。我们在此宣布，RM Search 正式上线。
           </AccordionItem>
         </Accordion>
       </section>
