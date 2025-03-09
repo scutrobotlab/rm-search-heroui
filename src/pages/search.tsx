@@ -384,7 +384,7 @@ export function Search() {
               strokeWidth="1.29"
             />
           </svg>
-          Filters
+          筛选器
         </button>
       </aside>
     </InstantSearch>

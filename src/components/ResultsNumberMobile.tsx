@@ -9,7 +9,7 @@ export function ResultsNumberMobile() {
 
   return (
     <div>
-      <strong>{formatNumber(nbHits)}</strong> results
+      <strong>{formatNumber(nbHits)}</strong> 条结果
     </div>
   );
 }

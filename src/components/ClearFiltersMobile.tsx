@@ -1,5 +1,5 @@
-import React from 'react';
-import { useClearRefinements } from 'react-instantsearch';
+import React from "react";
+import { useClearRefinements } from "react-instantsearch";
 
 export function ClearFiltersMobile({
   containerRef,
@@ -10,14 +10,14 @@ export function ClearFiltersMobile({
 
   function onClick() {
     refine();
-    document.body.classList.remove('filtering');
+    document.body.classList.remove("filtering");
     containerRef.current!.scrollIntoView();
   }
 
   return (
     <div className="ais-ClearRefinements">
       <button className="ais-ClearRefinements-button" onClick={onClick}>
-        Reset filters
+        清除筛选
       </button>
     </div>
   );

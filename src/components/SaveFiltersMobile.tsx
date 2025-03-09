@@ -9,7 +9,7 @@ export function SaveFiltersMobile({ onClick }: { onClick: () => void }) {
 
   return (
     <button className="button button-primary" onClick={onClick}>
-      See {formatNumber(nbHits)} results
+      浏览 {formatNumber(nbHits)} 条结果
     </button>
   );
 }
