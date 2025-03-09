@@ -28,8 +28,9 @@ export default function MilestonePage() {
             将所有数据导入到 ElasticSearch 构建索引，实现了基本的全文搜索功能。
           </AccordionItem>
           <AccordionItem subtitle="2025年1月23日" title="明确更高的目标">
-            经过几天的思考，我们认为与其做最好的论坛搜索引擎，不如做最好的RM社区搜索引擎。
-            我们计划将官网公告、B站、微信公众号等自媒体的内容也纳入搜索范围。
+            经过几天的思考，我们认为与其做最好的论坛搜索引擎，不如做最好的 RM
+            社区搜索引擎。我们计划继续索引官网公告，
+            同时将B站、微信公众号等自媒体的内容也纳入搜索范围。
             基于大量的公开资料，自动为每支队伍立传，最后发展成 RM 的《史记》。
           </AccordionItem>
           <AccordionItem subtitle="2025年2月11日" title="前端框架技术验证">
