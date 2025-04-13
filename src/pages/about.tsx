@@ -62,7 +62,6 @@ export default function DocsPage() {
           <p className="indent-8">
             截止至本站完成全量索引构建时， bbs.robomaster.com 和
             www.robomaster.com 均没有设置 robots.txt 文件，
-            <br />
             根据行业规范和相关法律法规，本站作为搜索引擎可以合法收集上述网站的内容。
           </p>
         </div>
