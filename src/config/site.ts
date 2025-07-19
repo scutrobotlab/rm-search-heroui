@@ -5,6 +5,10 @@ export const siteConfig = {
   description: "The Best Search Engine for RoboMaster",
   navItems: [
     {
+      label: "统计",
+      href: "/statistics",
+    },
+    {
       label: "里程碑",
       href: "/milestone",
     },
@@ -14,6 +18,10 @@ export const siteConfig = {
     },
   ],
   navMenuItems: [
+    {
+      label: "统计",
+      href: "/statistics",
+    },
     {
       label: "里程碑",
       href: "/milestone",

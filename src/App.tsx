@@ -5,6 +5,7 @@ import DocsPage from "@/pages/docs";
 import AboutPage from "@/pages/about";
 import SearchPage from "@/pages/search";
 import MilestonePage from "@/pages/milestone.tsx";
+import StatisticsPage from "@/pages/statistics.tsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route element={<DocsPage />} path="/docs" />
       <Route element={<AboutPage />} path="/about" />
       <Route element={<MilestonePage />} path="/milestone" />
+      <Route element={<StatisticsPage />} path="/statistics" />
     </Routes>
   );
 }
