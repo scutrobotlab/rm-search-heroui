@@ -5,9 +5,10 @@ import DefaultLayout from "@/layouts/default.tsx";
 import { title } from "@/components/primitives.ts";
 
 export default function StatisticsPage() {
-  const [WordCloudData, setWordCloudData] = useState<
+  const [wordCloudData, setWordCloudData] = useState<
     { word: string; count: number }[]
   >([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const spec = useMemo(() => {
     return {
@@ -17,10 +18,10 @@ export default function StatisticsPage() {
       seriesField: "word",
       data: {
         name: "WordCloudData",
-        values: WordCloudData,
+        values: wordCloudData,
       },
     } as VChartProps["spec"];
-  }, [WordCloudData]);
+  }, [wordCloudData]);
 
   // 组件挂载后获取数据
   useEffect(() => {
@@ -36,6 +37,9 @@ export default function StatisticsPage() {
         setWordCloudData(resp["data"]);
       } catch (error) {
         console.error("获取数据时出错:", error);
+      } finally {
+        // 无论成功或失败，都结束加载状态
+        setIsLoading(false);
       }
     };
 
@@ -56,7 +60,7 @@ export default function StatisticsPage() {
         </div>
 
         <b className={"text-2xl mt-4"}>搜索词云</b>
-        <VChart spec={spec} onClick={onChartClick} />
+        {!isLoading ? <VChart spec={spec} onClick={onChartClick} /> : false}
       </section>
     </DefaultLayout>
   );
