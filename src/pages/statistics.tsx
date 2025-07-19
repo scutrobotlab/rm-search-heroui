@@ -49,6 +49,8 @@ export default function StatisticsPage() {
   const onChartClick = (e: any) => {
     const word = e?.datum?.word;
 
+    if (!word) return;
+
     window.location.href = `/search/?query=${word}`;
   };
 
