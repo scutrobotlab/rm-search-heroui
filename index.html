@@ -20,6 +20,19 @@
       name="viewport"
     />
     <link href="/favicon.ico" rel="icon" />
+    <script type="module">
+      if (import.meta.env.MODE === 'production') {
+        var _hmt = _hmt || [];
+        (function () {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?41ad0b8124f256820bc693a9781452be";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      } else {
+        console.log(`当前环境: ${ import.meta.env.MODE }`);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
