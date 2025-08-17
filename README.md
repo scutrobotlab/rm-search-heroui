@@ -1,50 +1,50 @@
-# Vite & HeroUI Template
+# RM Search 励志做全 RM 最好用的搜索引擎
 
-This is a template for creating applications using Vite and HeroUI (v2).
+![img](docs/logo.png)
 
-[Try it on CodeSandbox](https://githubbox.com/frontio-ai/vite-template)
+RM Search 是一个前后端分离的项目，当前仓库是后端仓库。
 
-## Technologies Used
+**README 的主要内容撰写在后端仓库，本仓库仅包含前端技术方案。**
 
-- [Vite](https://vitejs.dev/guide/)
-- [HeroUI](https://heroui.com)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Framer Motion](https://www.framer.com/motion)
+**如果你希望继续深入了解 RM Search，请访问以下链接**
 
-## How to Use
+后端仓库 https://github.com/scutrobotlab/rm-search
 
-To clone the project, run the following command:
+## 技术方案
 
-```bash
-git clone https://github.com/frontio-ai/vite-template.git
+### 依赖工具、环境
+
+- NodeJS 20
+- Yarn 1.22
+
+### 编译、安装方式
+
+#### 安装依赖
+
+```Bash
+yarn
 ```
 
-### Install dependencies
+#### 本地运行
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
-npm install
+```Bash
+yarn run dev
 ```
 
-### Run the development server
+#### Docker 镜像
 
-```bash
-npm run dev
+你也可以构建用于生产环境的 Docker 镜像。
+
+```Bash
+docker build -t rm-search-heroui:latest .
+docker run -p 80:80 --name rm-search-heroui rm-search-heroui:latest
 ```
 
-### Setup pnpm (optional)
+### 原理介绍
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+使用 Searchkit 调用 ElasticSearch API
 
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
+https://www.searchkit.co/
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/frontio-ai/vite-template/blob/main/LICENSE).
+Searchkit 是一个用于快速构建与 Elasticsearch 搜索体验的开源库！Searchkit 首次发布于 2015 年，已被许多公司用于生产环境中。Searchkit
+是基于 Elasticsearch 的简单 API 构建的。
