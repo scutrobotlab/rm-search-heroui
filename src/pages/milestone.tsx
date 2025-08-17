@@ -72,8 +72,11 @@ export default function MilestonePage() {
           <AccordionItem subtitle="2025年3月18日" title="论坛接入 RM Search">
             在论坛搜索时，可以使用 RM Search 获取更多搜索结果。
           </AccordionItem>
-          <AccordionItem subtitle="2025年3月18日" title="搜索超过 10,000 次">
+          <AccordionItem subtitle="2025年3月18日" title="搜索超过 1 万次">
             RM Search 搜索次数突破了 10,000 次。
+          </AccordionItem>
+          <AccordionItem subtitle="2025年8月5日" title="搜索超过 10 万次">
+            RM Search 搜索次数突破了 100,000 次。
           </AccordionItem>
         </Accordion>
       </section>
