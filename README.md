@@ -1,6 +1,6 @@
 # RM Search 励志做全 RM 最好用的搜索引擎
 
-![img](docs/logo.png)
+![img](docs/logo.svg)
 
 RM Search 是一个前后端分离的项目，当前仓库是后端仓库。
 
