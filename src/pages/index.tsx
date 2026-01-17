@@ -1,6 +1,3 @@
-import { Alert } from "@heroui/alert";
-import { Button } from "@heroui/button";
-
 import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import { Logo } from "@/components/Icons.tsx";
@@ -29,26 +26,6 @@ export default function IndexPage() {
         <div className="mt-6 w-full max-w-lg">
           {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
           <QueryInput autoFocus={true} size={"lg"} />
-        </div>
-
-        <div className="mt-6 w-full max-w-lg">
-          <Alert
-            color="primary"
-            endContent={
-              <Button
-                color="primary"
-                size="md"
-                onPress={() => {
-                  window.open(
-                    "https://mp.weixin.qq.com/s/sz-43wAiDWigDKl-ROQSHw",
-                  );
-                }}
-              >
-                参与投票
-              </Button>
-            }
-            title="为 RoboSouls 投票！争夺 2025CUSGA 最具人气奖"
-          />
         </div>
       </section>
     </DefaultLayout>

@@ -10,8 +10,7 @@ import {
   RefinementList,
   Configure,
 } from "react-instantsearch";
-import Searchkit from "searchkit";
-import Client from "@searchkit/instantsearch-client";
+import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
 
 import DefaultLayout from "@/layouts/default";
 import {
@@ -35,115 +34,14 @@ import GetRouting from "@/pages/routing.ts";
 import QueryInput from "@/components/QueryInput.tsx";
 import { Loading } from "@/components/Loading.tsx";
 
-const sk = new Searchkit({
-  connection: {
-    host: "/api",
-  },
-  search_settings: {
-    highlight_attributes: ["title"],
-    snippet_attributes: ["content:100"],
-    search_attributes: [{ field: "title", weight: 5 }, "content"],
-    result_attributes: [
-      "id",
-      "source",
-      "title",
-      "content",
-      "image",
-      "url",
-      "author_nickname",
-      "author_avatar",
-      "create_time",
-    ],
-    facet_attributes: [
-      {
-        attribute: "source",
-        field: "source.keyword",
-        type: "string",
-      },
-      {
-        attribute: "categories.lvl0",
-        field: "category_lvl0.keyword",
-        type: "string",
-      },
-      {
-        attribute: "categories.lvl1",
-        field: "category_lvl1.keyword",
-        type: "string",
-      },
-      {
-        attribute: "college_name",
-        field: "college_name.keyword",
-        type: "string",
-      },
-    ],
-    sorting: {
-      default: {
-        field: "_score",
-        order: "desc",
-      },
-      _create_time_asc: {
-        field: "create_time",
-        order: "asc",
-      },
-      _create_time_desc: {
-        field: "create_time",
-        order: "desc",
-      },
-    },
-  },
-});
+const { searchClient } = instantMeiliSearch("http://localhost:7700", "", {
+  httpClient: async (url, opts) => {
+    const path = (url as URL).pathname;
+    const response = await fetch(`/api${path}`, opts);
 
-const searchClient = Client(sk, {
-  hooks: {
-    beforeSearch: async (searchRequests) => {
-      return searchRequests.map((sr) => {
-        const originalQuery = sr.body.query;
-        const newQuery = {
-          function_score: {
-            query: originalQuery,
-            functions: [
-              {
-                filter: {
-                  range: {
-                    create_time: {
-                      gte: "now-1095d",
-                    },
-                  },
-                },
-                gauss: {
-                  create_time: {
-                    origin: "now/d",
-                    scale: "1095d",
-                    offset: "30d",
-                    decay: 0.5,
-                  },
-                },
-              },
-              {
-                filter: {
-                  range: {
-                    create_time: {
-                      lt: "now-1095d",
-                    },
-                  },
-                },
-                weight: 0.5,
-              },
-            ],
-            score_mode: "first",
-            boost_mode: "multiply",
-          },
-        };
+    const text = await response.text();
 
-        return {
-          ...sr,
-          body: {
-            ...sr.body,
-            query: newQuery,
-          },
-        };
-      });
-    },
+    return JSON.parse(text);
   },
 });
 
