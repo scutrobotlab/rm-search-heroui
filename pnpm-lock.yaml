@@ -122,9 +122,6 @@ importers:
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
-      react-ga4:
-        specifier: ^2.1.0
-        version: 2.1.0
       react-instantsearch:
         specifier: ^7.15.3
         version: 7.22.1(algoliasearch@5.46.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3213,9 +3210,6 @@ packages:
     resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
       react: ^18.3.1
-
-  react-ga4@2.1.0:
-    resolution: {integrity: sha512-ZKS7PGNFqqMd3PJ6+C2Jtz/o1iU9ggiy8Y8nUeksgVuvNISbmrQtJiZNvC/TjDsqD0QlU5Wkgs7i+w9+OjHhhQ==}
 
   react-instantsearch-core@7.22.1:
     resolution: {integrity: sha512-fumuQbLKzEnZ3pX9LHXCbxfol8OiStWa63ujDin9SMb2k6cCMXbkuRC/eRe1EDLYPSfkVAKV+r6elOwT6fTVYQ==}
@@ -7792,8 +7786,6 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
-
-  react-ga4@2.1.0: {}
 
   react-instantsearch-core@7.22.1(algoliasearch@5.46.3)(react@18.3.1):
     dependencies:

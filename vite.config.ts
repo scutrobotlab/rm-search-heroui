@@ -15,4 +15,8 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: "../server/handler/frontend",
+    emptyOutDir: true
+  }
 });
