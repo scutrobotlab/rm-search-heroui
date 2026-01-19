@@ -3,8 +3,8 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@heroui/switch";
 import clsx from "clsx";
 
-import { useTheme } from "@/hooks/use-theme";
-import { SunFilledIcon, MoonFilledIcon } from "@/components/Icons";
+import { useTheme } from "@/hooks/use-theme.tsx";
+import { MoonFallFilledIcon, SunnyFilledIcon } from "tdesign-icons-react";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -19,8 +19,6 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 
   const { theme, toggleTheme } = useTheme();
 
-  const onChange = toggleTheme;
-
   const {
     Component,
     slots,
@@ -30,7 +28,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getWrapperProps,
   } = useSwitch({
     isSelected: theme === "light",
-    onChange,
+    onChange: toggleTheme,
   });
 
   useEffect(() => {
@@ -74,9 +72,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         })}
       >
         {isSelected ? (
-          <MoonFilledIcon size={22} />
+          <MoonFallFilledIcon size={22} />
         ) : (
-          <SunFilledIcon size={22} />
+          <SunnyFilledIcon size={22} />
         )}
       </div>
     </Component>

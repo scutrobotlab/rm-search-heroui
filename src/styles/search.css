@@ -42,6 +42,8 @@
 
 .container-footer {
   margin: 4rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 /* Styles the SFFV highlightings */
@@ -191,7 +193,6 @@ mark {
 }
 
 .hits-empty-state-description {
-  color: rgba(35, 37, 51, 0.6);
   font-size: 0.875rem;
   text-align: center;
 }

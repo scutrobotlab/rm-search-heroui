@@ -1,27 +1,14 @@
-import { useMemo, useEffect, useState } from "react";
-import { VChart, VChartProps } from "@visactor/react-vchart";
+import { useEffect, useState } from "react";
+import { WordCloudChart } from "@visactor/react-vchart";
 
-import DefaultLayout from "@/layouts/default.tsx";
 import { title } from "@/components/primitives.ts";
+import { useTheme } from "@/hooks/use-theme.tsx";
 
 export default function StatisticsPage() {
   const [wordCloudData, setWordCloudData] = useState<
     { word: string; count: number }[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const spec = useMemo(() => {
-    return {
-      type: "wordCloud",
-      nameField: "word",
-      valueField: "count",
-      seriesField: "word",
-      data: {
-        name: "WordCloudData",
-        values: wordCloudData,
-      },
-    } as VChartProps["spec"];
-  }, [wordCloudData]);
 
   // 组件挂载后获取数据
   useEffect(() => {
@@ -54,16 +41,28 @@ export default function StatisticsPage() {
     window.location.href = `/search/?query=${word}`;
   };
 
-  return (
-    <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-20">
-        <div className="inline-block max-w-lg text-center justify-center">
-          <h1 className={title()}>统计</h1>
-        </div>
+  const { theme } = useTheme();
 
-        <b className={"text-2xl mt-4"}>搜索词云</b>
-        {!isLoading ? <VChart spec={spec} onClick={onChartClick} /> : false}
-      </section>
-    </DefaultLayout>
+  return (
+    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 mt-20">
+      <div className="inline-block max-w-lg text-center justify-center">
+        <h1 className={title()}>统计</h1>
+      </div>
+
+      <b className={"text-2xl mt-4"}>搜索词云</b>
+      {!isLoading && (
+        <WordCloudChart
+          nameField="word"
+          valueField="count"
+          seriesField="word"
+          theme={theme}
+          data={{
+            name: "WordCloudData",
+            values: wordCloudData,
+          }}
+          onClick={onChartClick}
+        />
+      )}
+    </section>
   );
 }

@@ -3,7 +3,7 @@ import { Kbd } from "@heroui/kbd";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { SearchIcon } from "@/components/Icons.tsx";
+import { SearchIcon } from "tdesign-icons-react";
 
 export default function QueryInput({
   autoFocus = false,

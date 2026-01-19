@@ -1,114 +1,66 @@
 import { useRef } from "react";
-import {
-  HierarchicalMenu,
-  Hits,
-  HitsPerPage,
-  InstantSearch,
-  Pagination,
-  SearchBox,
-  SortBy,
-  RefinementList,
-  Configure,
-} from "react-instantsearch";
+import { Hits, InstantSearch, SearchBox, Configure } from "react-instantsearch";
 import { instantMeiliSearch } from "@meilisearch/instant-meilisearch";
+import { Spacer } from "@heroui/react";
+import SortBy from "@/components/SortBy.tsx";
+import HitsPerPage from "@/components/HitsPerPage.tsx";
+import Pagination from "@/components/Pagination.tsx";
 
-import DefaultLayout from "@/layouts/default";
-import {
-  ClearFilters,
-  ClearFiltersMobile,
-  NoResults,
-  NoResultsBoundary,
-  Panel,
-  ResultsNumberMobile,
-  SaveFiltersMobile,
-} from "@/components";
+import { NoResults, NoResultsBoundary } from "@/components";
 
 import "instantsearch.css/themes/reset.css";
 
 import "../styles/search.css";
 import "../styles/search.theme.css";
 import "../styles/search.mobile.css";
-import "@/components/Pagination.css";
 import { Hit } from "@/components/Hit.tsx";
 import GetRouting from "@/pages/routing.ts";
 import QueryInput from "@/components/QueryInput.tsx";
 import { Loading } from "@/components/Loading.tsx";
+import Stats from "@/components/Stats.tsx";
+import SearchFilter from "@/components/SearchFilter.tsx";
+import FilterFloatButton from "@/components/FilterFloatButton.tsx";
+import FilterChips from "@/components/FilterChips.tsx";
+import { useMediaQuery } from "usehooks-ts";
 
 const { searchClient } = instantMeiliSearch("http://localhost:7700", "", {
   httpClient: async (url, opts) => {
     const path = (url as URL).pathname;
-    const response = await fetch(`/api${path}`, opts);
+    const response = await fetch(`/api/ms${path}`, opts);
 
     const text = await response.text();
 
     return JSON.parse(text);
+  },
+  placeholderSearch: false,
+  primaryKey: "id",
+  keepZeroFacets: false,
+  finitePagination: true,
+  meiliSearchParams: {
+    attributesToSearchOn: ["title", "content"],
+    attributesToHighlight: ["title", "content"],
+    attributesToRetrieve: ["*"],
+    attributesToCrop: ["content:100"],
+    facets: [
+      "source",
+      "college_name",
+      "category_lvl0",
+      "category_lvl1",
+      "create_time",
+    ],
+    showRankingScore: true,
   },
 });
 
 const indexName = "rm-search";
 const routing = GetRouting(indexName);
 
-export default function DocsPage() {
-  return (
-    <DefaultLayout>
-      <Search />
-    </DefaultLayout>
-  );
-}
-
-export function Search() {
+export default function Search() {
   const containerRef = useRef<HTMLElement>(null);
-  const headerRef = useRef(null);
 
-  let paginationPadding: number = 0;
-  let paginationShowFirst: boolean = true;
-  let paginationShowLast: boolean = true;
-  const innerWidth = window.innerWidth;
-  const isMobile = innerWidth < 900;
-
-  if (innerWidth >= 0 && innerWidth < 400) {
-    paginationPadding = 1;
-    paginationShowFirst = false;
-    paginationShowLast = false;
-  } else if (innerWidth >= 400 && innerWidth < 500) {
-    paginationPadding = 1;
-  } else if (innerWidth >= 500 && innerWidth < 900) {
-    paginationPadding = 2;
-  } else if (innerWidth >= 900 && innerWidth < 1200) {
-    paginationPadding = 4;
-  } else if (innerWidth >= 1200) {
-    paginationPadding = 6;
-  }
-
-  function openFilters() {
-    document.body.classList.add("filtering");
-    window.scrollTo(0, 0);
-    window.addEventListener("keyup", onKeyUp);
-    window.addEventListener("click", onClick);
-  }
-
-  function closeFilters() {
-    document.body.classList.remove("filtering");
-    containerRef.current!.scrollIntoView();
-    window.removeEventListener("keyup", onKeyUp);
-    window.removeEventListener("click", onClick);
-  }
-
-  function onKeyUp(event: { key: string }) {
-    if (event.key !== "Escape") {
-      return;
-    }
-
-    closeFilters();
-  }
-
-  function onClick(event: MouseEvent) {
-    if (event.target !== headerRef.current) {
-      return;
-    }
-
-    closeFilters();
-  }
+  // const isMobile = innerWidth < 900;
+  // reactive
+  const isMobile = useMediaQuery("(max-width: 900px)");
 
   return (
     <InstantSearch
@@ -124,96 +76,36 @@ export function Search() {
         }}
       />
 
+      <Loading />
+
       {isMobile && (
         <div className="px-4">
           <QueryInput size={"lg"} />
         </div>
       )}
 
-      <Loading />
+      <Stats />
 
       <Configure
         attributesToSnippet={["content:10"]}
         removeWordsIfNoResults="allOptional"
         snippetEllipsisText="…"
+        sortBy="create_time:desc"
       />
+
+      <FilterChips />
 
       <div>
         <main ref={containerRef} className="search-container">
           <div className="container-wrapper mt-6">
-            {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-            <section className="container-filters" onKeyUp={onKeyUp}>
-              <div className="container-header">
-                <h2>筛选器</h2>
-
-                <div className="clear-filters" data-layout="desktop">
-                  <ClearFilters />
-                </div>
-
-                <div className="clear-filters" data-layout="mobile">
-                  <ResultsNumberMobile />
-                </div>
-              </div>
-
-              <div className="container-body text-sm">
-                <Panel header="来源">
-                  <RefinementList attribute="source" />
-                </Panel>
-
-                <Panel header="标签">
-                  <HierarchicalMenu
-                    showMore
-                    attributes={["categories.lvl0", "categories.lvl1"]}
-                    limit={8}
-                  />
-                </Panel>
-
-                <Panel header="学校">
-                  <RefinementList
-                    searchable
-                    showMore
-                    attribute="college_name"
-                    limit={8}
-                  />
-                </Panel>
-
-                {/*<Panel header="Brands">*/}
-                {/*  <RefinementList*/}
-                {/*    attribute="brand"*/}
-                {/*    searchable={true}*/}
-                {/*    searchablePlaceholder="Search for brands…"*/}
-                {/*  />*/}
-                {/*</Panel>*/}
-
-                {/*<Panel header="Price">*/}
-                {/*  <PriceSlider attribute="price" />*/}
-                {/*</Panel>*/}
-
-                {/*<Panel header="Free shipping">*/}
-                {/*  <ToggleRefinement*/}
-                {/*    attribute="free_shipping"*/}
-                {/*    label="Display only items with free shipping"*/}
-                {/*    on={true}*/}
-                {/*  />*/}
-                {/*</Panel>*/}
-              </div>
+            <section className="container-filters">
+              <SearchFilter />
             </section>
-
-            <footer className="container-filters-footer" data-layout="mobile">
-              <div className="container-filters-footer-button-wrapper">
-                <ClearFiltersMobile containerRef={containerRef} />
-              </div>
-
-              <div className="container-filters-footer-button-wrapper">
-                <SaveFiltersMobile onClick={closeFilters} />
-              </div>
-            </footer>
           </div>
 
           <section className="container-results mt-6">
             <header className="container-header container-options">
               <SortBy
-                className="container-option"
                 items={[
                   {
                     label: "默认排序",
@@ -221,17 +113,18 @@ export function Search() {
                   },
                   {
                     label: "创建时间最新",
-                    value: "rm-search_create_time_desc",
+                    value: "rm-search:create_time:desc",
                   },
                   {
                     label: "创建时间最早",
-                    value: "rm-search_create_time_asc",
+                    value: "rm-search:create_time:asc",
                   },
                 ]}
               />
 
+              <Spacer x={4} />
+
               <HitsPerPage
-                className="container-option"
                 items={[
                   {
                     label: "每页 10 条记录",
@@ -255,36 +148,13 @@ export function Search() {
             </NoResultsBoundary>
 
             <footer className="container-footer">
-              <Pagination
-                padding={paginationPadding}
-                showFirst={paginationShowFirst}
-                showLast={paginationShowLast}
-              />
+              <Pagination />
             </footer>
           </section>
         </main>
       </div>
 
-      <aside data-layout="mobile">
-        <button
-          className="filters-button"
-          data-action="open-overlay"
-          onClick={openFilters}
-        >
-          <svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M15 1H1l5.6 6.3v4.37L9.4 13V7.3z"
-              fill="none"
-              fillRule="evenodd"
-              stroke="#fff"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.29"
-            />
-          </svg>
-          筛选器
-        </button>
-      </aside>
+      {isMobile && <FilterFloatButton />}
     </InstantSearch>
   );
 }
