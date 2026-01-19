@@ -15,7 +15,6 @@ export default function DateTimeRanger(
       return undefined;
     }
 
-    console.log(v);
     return fromDate(new Date(v), getLocalTimeZone());
   };
   const value = useMemo(() => {
