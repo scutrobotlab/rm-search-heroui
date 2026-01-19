@@ -58,14 +58,12 @@ export function Hit({ hit }: { hit: HitType }) {
               </div>
               {hasImage && (
                 <div className="col-span-6 md:col-span-4 ml-2 flex items-center justify-center h-full relative overflow-hidden">
-                  <div className="image-gradient-mask absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-white overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center overflow-hidden">
                     <Image
-                      isZoomed
                       alt={hit.title}
-                      className="object-cover h-full w-full rounded-none border-none hit-image"
                       fallbackSrc={fallback}
                       shadow={"none"}
-                      loading="lazy"
+                      loading="eager"
                       src={hit.image}
                     />
                   </div>
