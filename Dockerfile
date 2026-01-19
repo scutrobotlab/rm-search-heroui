@@ -13,4 +13,5 @@ RUN pnpm build
 
 FROM nginx:stable-alpine
 
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /src/dist /usr/share/nginx/html
