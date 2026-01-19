@@ -13,9 +13,10 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { BilibiliIcon, GithubIcon } from "@/components/Icons";
+import { BilibiliIcon } from "@/components/Icons";
 import { Logo } from "@/components/Icons";
 import QueryInput from "@/components/QueryInput.tsx";
+import { LogoGithubFilledIcon } from "tdesign-icons-react";
 
 export const Navbar = () => {
   const isHomePage = location.pathname === "/";
@@ -67,7 +68,7 @@ export const Navbar = () => {
             <BilibiliIcon className="text-default-500" />
           </Link>
           <Link isExternal href={siteConfig.links.github} title="GitHub">
-            <GithubIcon className="text-default-500" />
+            <LogoGithubFilledIcon className="text-default-500" size={24} />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
@@ -86,7 +87,7 @@ export const Navbar = () => {
       </NavbarContent>
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <Link isExternal href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
+          <LogoGithubFilledIcon className="text-default-500" size={24} />
         </Link>
         <ThemeSwitch />
         <NavbarMenuToggle />

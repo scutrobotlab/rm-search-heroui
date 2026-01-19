@@ -1,11 +1,11 @@
 /* Global */
 
-[class^='ais-'] {
+[class^="ais-"] {
   box-sizing: border-box;
   /*font-size: 1rem;*/
 }
 
-a[class^='ais-'] {
+a[class^="ais-"] {
   color: #21243d;
   text-decoration: none;
 }
@@ -14,7 +14,7 @@ a[class^='ais-'] {
   We need to target all elements for widgets containing
   multiple sub elements (e.g. RangeSlider)
 */
-[class^='ais-'][class$='--disabled'] * {
+[class^="ais-"][class$="--disabled"] * {
   cursor: not-allowed;
 }
 
@@ -120,7 +120,7 @@ a[class^='ais-'] {
 }
 
 .ais-RatingMenu-starIcon--full {
-  fill: #0072F5;
+  fill: #0072f5;
 }
 
 .ais-RatingMenu-starIcon--empty {
@@ -269,13 +269,13 @@ a[class^='ais-'] {
 }
 
 .ais-RefinementList-item--selected .ais-RefinementList-checkbox {
-  background-color: #0072F5;
+  background-color: #0072f5;
 }
 
 .ais-RefinementList-item--selected .ais-RefinementList-checkbox::after {
   background-color: #fff;
   border-radius: 4px;
-  content: '';
+  content: "";
   height: 4px;
   left: 50%;
   position: absolute;
@@ -364,15 +364,16 @@ a[class^='ais-'] {
 }
 
 .ais-ToggleRefinement-checkbox:checked {
-  background: #0072F5;
+  background: #0072f5;
 }
 
 .ais-ToggleRefinement-checkbox::after {
   background-image: linear-gradient(to top, #f5f5fa, #fff);
   border-radius: 100%;
-  box-shadow: 0 4px 11px 0 rgba(37, 44, 97, 0.15),
+  box-shadow:
+    0 4px 11px 0 rgba(37, 44, 97, 0.15),
     0 2px 3px 0 rgba(93, 100, 148, 0.2);
-  content: '';
+  content: "";
   height: 16px;
   position: absolute;
   transition: transform 150ms ease-out;
@@ -422,7 +423,7 @@ a[class^='ais-'] {
 }
 
 .ais-RangeSlider .rheostat-progress {
-  background-color: #0072F5;
+  background-color: #0072f5;
   border-radius: 3px;
   height: 3px;
   top: 0;
@@ -439,7 +440,8 @@ a[class^='ais-'] {
 .ais-RangeSlider .rheostat-handle {
   background-image: linear-gradient(to top, #f5f5fa, #fff);
   border: none;
-  box-shadow: 0 4px 11px 0 rgba(37, 44, 97, 0.15),
+  box-shadow:
+    0 4px 11px 0 rgba(37, 44, 97, 0.15),
     0 2px 3px 0 rgba(93, 100, 148, 0.2);
   margin-left: -5px;
   top: -9px;
@@ -497,7 +499,7 @@ a[class^='ais-'] {
 }
 
 .ais-Pagination-item--selected {
-  background-color: #0072F5;
+  background-color: #0072f5;
   background-image: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.34),

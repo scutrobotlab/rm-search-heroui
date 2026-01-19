@@ -1,18 +1,16 @@
-FROM node:20-alpine as build
-WORKDIR /app
+FROM node:20-slim AS builder
 
-COPY package.json yarn.lock ./
+RUN npm install -g pnpm@latest
 
-RUN yarn install
+WORKDIR /src
+COPY package*.json pnpm-lock.yaml ./
+
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN yarn build
+RUN pnpm build
 
-FROM caddy:2-alpine
-COPY --from=build /app/dist /srv
-COPY Caddyfile /etc/caddy/Caddyfile
+FROM nginx:stable-alpine
 
-EXPOSE 80
-
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+COPY --from=builder /src/dist /usr/share/nginx/html

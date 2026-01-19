@@ -83,7 +83,7 @@
   }
 
   .container-filters-footer .button-primary {
-    background-color: #0072F5;
+    background-color: #0072f5;
     color: #fff;
   }
 
@@ -95,7 +95,7 @@
 
   .filters-button {
     align-items: center;
-    background-color: #0072F5;
+    background-color: #0072f5;
     border: none;
     border-radius: 8px;
     bottom: 2rem;
@@ -258,7 +258,7 @@
 
   /* Hide all desktop-specific design on mobile */
 
-  [data-layout='desktop'] {
+  [data-layout="desktop"] {
     display: none;
   }
 }

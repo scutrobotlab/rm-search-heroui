@@ -5,6 +5,7 @@ import { Card, CardBody, CardFooter } from "@heroui/card"; // 引入 CardFooter
 import { Highlight, Snippet } from "react-instantsearch";
 import { User } from "@heroui/user";
 import moment from "moment";
+import fallback from "@/assets/fallback.png";
 
 type HitType = AlgoliaHit<{
   id: string;
@@ -26,6 +27,7 @@ export function Hit({ hit }: { hit: HitType }) {
         isBlurred
         className="border-none h-full flex flex-col p-2"
         shadow="sm"
+        isHoverable
       >
         <CardBody>
           <div className="flex-grow">
@@ -55,14 +57,15 @@ export function Hit({ hit }: { hit: HitType }) {
                 </div>
               </div>
               {hasImage && (
-                <div className="col-span-6 md:col-span-4 ml-2 flex items-center justify-center h-full relative">
-                  <div className="image-gradient-mask absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-white">
+                <div className="col-span-6 md:col-span-4 ml-2 flex items-center justify-center h-full relative overflow-hidden">
+                  <div className="image-gradient-mask absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-white overflow-hidden">
                     <Image
                       isZoomed
                       alt={hit.title}
                       className="object-cover h-full w-full rounded-none border-none hit-image"
-                      fallbackSrc="/placeholder.jpg"
+                      fallbackSrc={fallback}
                       shadow={"none"}
+                      loading="lazy"
                       src={hit.image}
                     />
                   </div>
