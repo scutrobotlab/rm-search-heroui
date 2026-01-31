@@ -1,6 +1,6 @@
 import type { NavigateOptions } from "react-router-dom";
 
-import { HeroUIProvider } from "@heroui/system";
+import { HeroUIProvider } from "@heroui/react";
 import { useHref, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/use-theme.tsx";
 import { ToastProvider } from "@heroui/toast";
@@ -14,11 +14,27 @@ declare module "@react-types/shared" {
 
 export function Provider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
+  const href = useHref;
+
+  const handleNavigate = (to: string, options?: NavigateOptions) => {
+    if (to.startsWith("http://") || to.startsWith("https://")) {
+      window.location.href = to;
+      return;
+    }
+    navigate(to, options);
+  };
+
+  const handleHref = (to: string) => {
+    if (to.startsWith("http://") || to.startsWith("https://")) {
+      return to;
+    }
+    return href(to);
+  };
 
   return (
     <ThemeProvider>
       <I18nProvider locale="zh-CN">
-        <HeroUIProvider navigate={navigate} useHref={useHref}>
+        <HeroUIProvider navigate={handleNavigate} useHref={handleHref}>
           <ToastProvider />
           {children}
         </HeroUIProvider>

@@ -33,6 +33,6 @@ export const siteConfig = {
   ],
   links: {
     bilibili: "https://space.bilibili.com/523048929",
-    github: "https://github.com/scutrobotlab",
+    github: "https://github.com/scutrobotlab/rm-search",
   },
 };

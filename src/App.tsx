@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 
 import { Suspense, lazy } from "react";
-import { Progress } from "@heroui/progress";
 import DefaultLayout from "@/layouts/default.tsx";
+import { Spinner } from "@heroui/react";
 const IndexPage = lazy(() => import("@/pages/index"));
 const DocsPage = lazy(() => import("@/pages/docs"));
 const AboutPage = lazy(() => import("@/pages/about"));
@@ -12,12 +12,9 @@ const StatisticsPage = lazy(() => import("@/pages/statistics.tsx"));
 
 function RouteLoading() {
   return (
-    <Progress
-      isIndeterminate
-      aria-label="Loading..."
-      className="max-w-md"
-      size="sm"
-    />
+     <div className="flex h-screen w-full items-center justify-center">
+      <Spinner color="success" size="lg" />
+    </div>
   );
 }
 

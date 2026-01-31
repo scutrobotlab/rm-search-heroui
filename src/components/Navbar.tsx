@@ -1,4 +1,3 @@
-import { Link } from "@heroui/link";
 import {
   Navbar as HeroUINavbar,
   NavbarBrand,
@@ -17,6 +16,7 @@ import { BilibiliIcon } from "@/components/Icons";
 import { Logo } from "@/components/Icons";
 import QueryInput from "@/components/QueryInput.tsx";
 import { LogoGithubFilledIcon } from "tdesign-icons-react";
+import { Link } from "@heroui/react";
 
 export const Navbar = () => {
   const isHomePage = location.pathname === "/";
